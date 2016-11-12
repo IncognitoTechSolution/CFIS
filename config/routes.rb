@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  resources :address_types
+  resources :addresses
+  resources :treasurers
+  resources :candidates
+  resources :committee_types
+  resources :report_types
+  resources :election_types
+  resources :office_helds
+  resources :office_soughts
+  resources :filer_types
   resources :loans
   resources :credits
   resources :investment_purchases

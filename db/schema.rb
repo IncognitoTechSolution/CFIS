@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161112202111) do
+ActiveRecord::Schema.define(version: 20161112205215) do
+
+  create_table "address_types", force: :cascade do |t|
+    t.string   "adtype",     limit: 4000
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "addresses", force: :cascade do |t|
+    t.integer  "state_id",      limit: 4
+    t.integer  "address_type",  limit: 4
+    t.string   "address",       limit: 4000
+    t.string   "suiteapt",      limit: 4000
+    t.string   "city",          limit: 4000
+    t.string   "zipcode",       limit: 4000
+    t.boolean  "addresschange"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
 
   create_table "campaign_finance_infos", force: :cascade do |t|
     t.integer  "filer_id",         limit: 4
@@ -26,6 +44,22 @@ ActiveRecord::Schema.define(version: 20161112202111) do
     t.date     "periodbegin"
     t.date     "periodend"
     t.date     "electiondate"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  create_table "candidates", force: :cascade do |t|
+    t.integer  "filer_id",         limit: 4
+    t.integer  "prefix_id",        limit: 4
+    t.integer  "office_held_id",   limit: 4
+    t.integer  "office_sought_id", limit: 4
+    t.string   "firstname",        limit: 4000
+    t.string   "lastname",         limit: 4000
+    t.string   "mi",               limit: 4000
+    t.string   "alias",            limit: 4000
+    t.string   "suffix",           limit: 4000
+    t.string   "phone",            limit: 4000
+    t.string   "extension",        limit: 4000
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
   end
@@ -48,6 +82,12 @@ ActiveRecord::Schema.define(version: 20161112202111) do
     t.boolean  "isaustintxlivingexpense"
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
+  end
+
+  create_table "committee_types", force: :cascade do |t|
+    t.string   "comtype",    limit: 4000
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "contribution_types", force: :cascade do |t|
@@ -93,6 +133,12 @@ ActiveRecord::Schema.define(version: 20161112202111) do
     t.datetime "updated_at",                                  null: false
   end
 
+  create_table "election_types", force: :cascade do |t|
+    t.string   "ectype",     limit: 4000
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
   create_table "entity_types", force: :cascade do |t|
     t.string   "entype",     limit: 4000
     t.datetime "created_at",              null: false
@@ -133,6 +179,12 @@ ActiveRecord::Schema.define(version: 20161112202111) do
     t.datetime "updated_at",                                  null: false
   end
 
+  create_table "filer_types", force: :cascade do |t|
+    t.string   "ftype",      limit: 4000
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
   create_table "investment_purchases", force: :cascade do |t|
     t.integer  "campaign_finance_info_id", limit: 4
     t.integer  "prefix_id",                limit: 4
@@ -171,6 +223,18 @@ ActiveRecord::Schema.define(version: 20161112202111) do
     t.datetime "updated_at",                                  null: false
   end
 
+  create_table "office_helds", force: :cascade do |t|
+    t.string   "held",       limit: 4000
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "office_soughts", force: :cascade do |t|
+    t.string   "sought",     limit: 4000
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
   create_table "payment_methods", force: :cascade do |t|
     t.string   "paymentmethod", limit: 4000
     t.datetime "created_at",                 null: false
@@ -183,8 +247,27 @@ ActiveRecord::Schema.define(version: 20161112202111) do
     t.datetime "updated_at",              null: false
   end
 
+  create_table "report_types", force: :cascade do |t|
+    t.string   "rptype",     limit: 4000
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
   create_table "states", force: :cascade do |t|
     t.string   "state",      limit: 4000
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "treasurers", force: :cascade do |t|
+    t.integer  "prefix_id",  limit: 4
+    t.string   "firstname",  limit: 4000
+    t.string   "mi",         limit: 4000
+    t.string   "lastname",   limit: 4000
+    t.string   "alias",      limit: 4000
+    t.string   "suffix",     limit: 4000
+    t.string   "phone",      limit: 4000
+    t.string   "extension",  limit: 4000
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
