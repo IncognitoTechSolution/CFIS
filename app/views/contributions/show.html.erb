@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Campaign finance info:</strong>
+  <%= @contribution.campaign_finance_info_id %>
+</p>
+
+<p>
+  <strong>Contribution type:</strong>
+  <%= @contribution.contribution_type_id %>
+</p>
+
+<p>
+  <strong>Prefix:</strong>
+  <%= @contribution.prefix_id %>
+</p>
+
+<p>
+  <strong>Entity type:</strong>
+  <%= @contribution.entity_type_id %>
+</p>
+
+<p>
+  <strong>Contributorname:</strong>
+  <%= @contribution.contributorname %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @contribution.address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @contribution.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @contribution.state_id %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @contribution.zip %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @contribution.amount %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @contribution.date %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @contribution.description %>
+</p>
+
+<p>
+  <strong>Isoutofstatepac:</strong>
+  <%= @contribution.isoutofstatepac %>
+</p>
+
+<p>
+  <strong>Pacid:</strong>
+  <%= @contribution.pacid %>
+</p>
+
+<p>
+  <strong>Istraveloutsidetx:</strong>
+  <%= @contribution.istraveloutsidetx %>
+</p>
+
+<%= link_to 'Edit', edit_contribution_path(@contribution) %> |
+<%= link_to 'Back', contributions_path %>

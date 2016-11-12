@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Campaign finance info:</strong>
+  <%= @credit.campaign_finance_info_id %>
+</p>
+
+<p>
+  <strong>Prefix:</strong>
+  <%= @credit.prefix_id %>
+</p>
+
+<p>
+  <strong>Entity type:</strong>
+  <%= @credit.entity_type_id %>
+</p>
+
+<p>
+  <strong>Creditorname:</strong>
+  <%= @credit.creditorname %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @credit.address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @credit.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @credit.state_id %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @credit.zip %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @credit.amount %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @credit.date %>
+</p>
+
+<p>
+  <strong>Purpose:</strong>
+  <%= @credit.purpose %>
+</p>
+
+<p>
+  <strong>Isreturnedtofiler:</strong>
+  <%= @credit.isreturnedtofiler %>
+</p>
+
+<%= link_to 'Edit', edit_credit_path(@credit) %> |
+<%= link_to 'Back', credits_path %>

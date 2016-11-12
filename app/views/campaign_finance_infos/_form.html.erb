@@ -1,0 +1,65 @@
+<%= form_for(@campaign_finance_info) do |f| %>
+  <% if @campaign_finance_info.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@campaign_finance_info.errors.count, "error") %> prohibited this campaign_finance_info from being saved:</h2>
+
+      <ul>
+      <% @campaign_finance_info.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :filer_id %><br>
+    <%= f.number_field :filer_id %>
+  </div>
+  <div class="field">
+    <%= f.label :report_type_id %><br>
+    <%= f.number_field :report_type_id %>
+  </div>
+  <div class="field">
+    <%= f.label :candidate_id %><br>
+    <%= f.number_field :candidate_id %>
+  </div>
+  <div class="field">
+    <%= f.label :treasurer_id %><br>
+    <%= f.number_field :treasurer_id %>
+  </div>
+  <div class="field">
+    <%= f.label :election_type_id %><br>
+    <%= f.number_field :election_type_id %>
+  </div>
+  <div class="field">
+    <%= f.label :sudmitdate %><br>
+    <%= f.date_select :sudmitdate %>
+  </div>
+  <div class="field">
+    <%= f.label :filename %><br>
+    <%= f.text_field :filename %>
+  </div>
+  <div class="field">
+    <%= f.label :campaignyear %><br>
+    <%= f.text_field :campaignyear %>
+  </div>
+  <div class="field">
+    <%= f.label :ontime %><br>
+    <%= f.check_box :ontime %>
+  </div>
+  <div class="field">
+    <%= f.label :periodbegin %><br>
+    <%= f.date_select :periodbegin %>
+  </div>
+  <div class="field">
+    <%= f.label :periodend %><br>
+    <%= f.date_select :periodend %>
+  </div>
+  <div class="field">
+    <%= f.label :electiondate %><br>
+    <%= f.date_select :electiondate %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

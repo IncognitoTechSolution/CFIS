@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Coh Payments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Campaign finance info</th>
+      <th>Expend category</th>
+      <th>Prefix</th>
+      <th>Entity type</th>
+      <th>Businessname</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Amount</th>
+      <th>Date</th>
+      <th>Description</th>
+      <th>Isbenefitcoh</th>
+      <th>Istraveloutsidetx</th>
+      <th>Isaustintxlivingexpense</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @coh_payments.each do |coh_payment| %>
+      <tr>
+        <td><%= coh_payment.campaign_finance_info_id %></td>
+        <td><%= coh_payment.expend_category_id %></td>
+        <td><%= coh_payment.prefix_id %></td>
+        <td><%= coh_payment.entity_type_id %></td>
+        <td><%= coh_payment.businessname %></td>
+        <td><%= coh_payment.address %></td>
+        <td><%= coh_payment.city %></td>
+        <td><%= coh_payment.state_id %></td>
+        <td><%= coh_payment.zip %></td>
+        <td><%= coh_payment.amount %></td>
+        <td><%= coh_payment.date %></td>
+        <td><%= coh_payment.description %></td>
+        <td><%= coh_payment.isbenefitcoh %></td>
+        <td><%= coh_payment.istraveloutsidetx %></td>
+        <td><%= coh_payment.isaustintxlivingexpense %></td>
+        <td><%= link_to 'Show', coh_payment %></td>
+        <td><%= link_to 'Edit', edit_coh_payment_path(coh_payment) %></td>
+        <td><%= link_to 'Destroy', coh_payment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Coh payment', new_coh_payment_path %>

@@ -1,0 +1,85 @@
+<%= form_for(@expenditure) do |f| %>
+  <% if @expenditure.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@expenditure.errors.count, "error") %> prohibited this expenditure from being saved:</h2>
+
+      <ul>
+      <% @expenditure.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :campaign_finance_info_id %><br>
+    <%= f.number_field :campaign_finance_info_id %>
+  </div>
+  <div class="field">
+    <%= f.label :expend_type_id %><br>
+    <%= f.number_field :expend_type_id %>
+  </div>
+  <div class="field">
+    <%= f.label :expend_category_id %><br>
+    <%= f.number_field :expend_category_id %>
+  </div>
+  <div class="field">
+    <%= f.label :payment_method_id %><br>
+    <%= f.number_field :payment_method_id %>
+  </div>
+  <div class="field">
+    <%= f.label :prefix_id %><br>
+    <%= f.number_field :prefix_id %>
+  </div>
+  <div class="field">
+    <%= f.label :entity_type_id %><br>
+    <%= f.number_field :entity_type_id %>
+  </div>
+  <div class="field">
+    <%= f.label :contributorname %><br>
+    <%= f.text_field :contributorname %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br>
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :state_id %><br>
+    <%= f.number_field :state_id %>
+  </div>
+  <div class="field">
+    <%= f.label :zip %><br>
+    <%= f.text_field :zip %>
+  </div>
+  <div class="field">
+    <%= f.label :amount %><br>
+    <%= f.text_field :amount %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.date_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :isbenefitCOH %><br>
+    <%= f.check_box :isbenefitCOH %>
+  </div>
+  <div class="field">
+    <%= f.label :istraveloutsidetx %><br>
+    <%= f.check_box :istraveloutsidetx %>
+  </div>
+  <div class="field">
+    <%= f.label :isreimbursementintended %><br>
+    <%= f.check_box :isreimbursementintended %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,1 @@
+json.partial! "campaign_finance_infos/campaign_finance_info", campaign_finance_info: @campaign_finance_info

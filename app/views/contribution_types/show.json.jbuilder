@@ -1,0 +1,1 @@
+json.partial! "contribution_types/contribution_type", contribution_type: @contribution_type

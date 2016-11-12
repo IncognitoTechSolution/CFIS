@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  campaign_finance_info_id: 1
+  expend_type_id: 1
+  expend_category_id: 1
+  payment_method_id: 1
+  prefix_id: 1
+  entity_type_id: 1
+  contributorname: MyString
+  address: MyString
+  city: MyString
+  state_id: 1
+  zip: MyString
+  amount: 1.5
+  date: 2016-11-12
+  description: MyText
+  isbenefitCOH: false
+  istraveloutsidetx: false
+  isreimbursementintended: false
+
+two:
+  campaign_finance_info_id: 1
+  expend_type_id: 1
+  expend_category_id: 1
+  payment_method_id: 1
+  prefix_id: 1
+  entity_type_id: 1
+  contributorname: MyString
+  address: MyString
+  city: MyString
+  state_id: 1
+  zip: MyString
+  amount: 1.5
+  date: 2016-11-12
+  description: MyText
+  isbenefitCOH: false
+  istraveloutsidetx: false
+  isreimbursementintended: false

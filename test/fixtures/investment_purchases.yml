@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  campaign_finance_info_id: 1
+  prefix_id: 1
+  entity_type_id: 1
+  investorname: MyString
+  address: MyString
+  city: MyString
+  state_id: 1
+  zip: MyString
+  amount: 1.5
+  date: 2016-11-12
+  description: MyText
+
+two:
+  campaign_finance_info_id: 1
+  prefix_id: 1
+  entity_type_id: 1
+  investorname: MyString
+  address: MyString
+  city: MyString
+  state_id: 1
+  zip: MyString
+  amount: 1.5
+  date: 2016-11-12
+  description: MyText

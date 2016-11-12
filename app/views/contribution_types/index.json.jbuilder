@@ -1,0 +1,1 @@
+json.array! @contribution_types, partial: 'contribution_types/contribution_type', as: :contribution_type

@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Expenditures</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Campaign finance info</th>
+      <th>Expend type</th>
+      <th>Expend category</th>
+      <th>Payment method</th>
+      <th>Prefix</th>
+      <th>Entity type</th>
+      <th>Contributorname</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Amount</th>
+      <th>Date</th>
+      <th>Description</th>
+      <th>Isbenefitcoh</th>
+      <th>Istraveloutsidetx</th>
+      <th>Isreimbursementintended</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @expenditures.each do |expenditure| %>
+      <tr>
+        <td><%= expenditure.campaign_finance_info_id %></td>
+        <td><%= expenditure.expend_type_id %></td>
+        <td><%= expenditure.expend_category_id %></td>
+        <td><%= expenditure.payment_method_id %></td>
+        <td><%= expenditure.prefix_id %></td>
+        <td><%= expenditure.entity_type_id %></td>
+        <td><%= expenditure.contributorname %></td>
+        <td><%= expenditure.address %></td>
+        <td><%= expenditure.city %></td>
+        <td><%= expenditure.state_id %></td>
+        <td><%= expenditure.zip %></td>
+        <td><%= expenditure.amount %></td>
+        <td><%= expenditure.date %></td>
+        <td><%= expenditure.description %></td>
+        <td><%= expenditure.isbenefitCOH %></td>
+        <td><%= expenditure.istraveloutsidetx %></td>
+        <td><%= expenditure.isreimbursementintended %></td>
+        <td><%= link_to 'Show', expenditure %></td>
+        <td><%= link_to 'Edit', edit_expenditure_path(expenditure) %></td>
+        <td><%= link_to 'Destroy', expenditure, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Expenditure', new_expenditure_path %>

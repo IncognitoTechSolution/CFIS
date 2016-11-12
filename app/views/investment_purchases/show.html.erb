@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Campaign finance info:</strong>
+  <%= @investment_purchase.campaign_finance_info_id %>
+</p>
+
+<p>
+  <strong>Prefix:</strong>
+  <%= @investment_purchase.prefix_id %>
+</p>
+
+<p>
+  <strong>Entity type:</strong>
+  <%= @investment_purchase.entity_type_id %>
+</p>
+
+<p>
+  <strong>Investorname:</strong>
+  <%= @investment_purchase.investorname %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @investment_purchase.address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @investment_purchase.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @investment_purchase.state_id %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @investment_purchase.zip %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @investment_purchase.amount %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @investment_purchase.date %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @investment_purchase.description %>
+</p>
+
+<%= link_to 'Edit', edit_investment_purchase_path(@investment_purchase) %> |
+<%= link_to 'Back', investment_purchases_path %>

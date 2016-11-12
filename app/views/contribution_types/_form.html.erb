@@ -1,0 +1,21 @@
+<%= form_for(@contribution_type) do |f| %>
+  <% if @contribution_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contribution_type.errors.count, "error") %> prohibited this contribution_type from being saved:</h2>
+
+      <ul>
+      <% @contribution_type.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :contype %><br>
+    <%= f.text_field :contype %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

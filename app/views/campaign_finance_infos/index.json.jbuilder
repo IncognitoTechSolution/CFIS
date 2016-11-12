@@ -1,0 +1,1 @@
+json.array! @campaign_finance_infos, partial: 'campaign_finance_infos/campaign_finance_info', as: :campaign_finance_info

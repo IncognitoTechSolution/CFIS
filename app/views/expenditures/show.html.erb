@@ -1,0 +1,89 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Campaign finance info:</strong>
+  <%= @expenditure.campaign_finance_info_id %>
+</p>
+
+<p>
+  <strong>Expend type:</strong>
+  <%= @expenditure.expend_type_id %>
+</p>
+
+<p>
+  <strong>Expend category:</strong>
+  <%= @expenditure.expend_category_id %>
+</p>
+
+<p>
+  <strong>Payment method:</strong>
+  <%= @expenditure.payment_method_id %>
+</p>
+
+<p>
+  <strong>Prefix:</strong>
+  <%= @expenditure.prefix_id %>
+</p>
+
+<p>
+  <strong>Entity type:</strong>
+  <%= @expenditure.entity_type_id %>
+</p>
+
+<p>
+  <strong>Contributorname:</strong>
+  <%= @expenditure.contributorname %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @expenditure.address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @expenditure.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @expenditure.state_id %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @expenditure.zip %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @expenditure.amount %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @expenditure.date %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @expenditure.description %>
+</p>
+
+<p>
+  <strong>Isbenefitcoh:</strong>
+  <%= @expenditure.isbenefitCOH %>
+</p>
+
+<p>
+  <strong>Istraveloutsidetx:</strong>
+  <%= @expenditure.istraveloutsidetx %>
+</p>
+
+<p>
+  <strong>Isreimbursementintended:</strong>
+  <%= @expenditure.isreimbursementintended %>
+</p>
+
+<%= link_to 'Edit', edit_expenditure_path(@expenditure) %> |
+<%= link_to 'Back', expenditures_path %>

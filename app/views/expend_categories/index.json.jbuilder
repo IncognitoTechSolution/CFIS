@@ -1,0 +1,1 @@
+json.array! @expend_categories, partial: 'expend_categories/expend_category', as: :expend_category
