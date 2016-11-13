@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161113045950) do
+ActiveRecord::Schema.define(version: 20161113211744) do
 
   create_table "address_types", force: :cascade do |t|
     t.string   "adtype",     limit: 4000
@@ -191,6 +191,24 @@ ActiveRecord::Schema.define(version: 20161113045950) do
     t.string   "ftype",      limit: 4000
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+  end
+
+  create_table "filers", force: :cascade do |t|
+    t.integer  "filer_type_id",     limit: 4
+    t.string   "firstname",         limit: 4000
+    t.string   "mi",                limit: 4000
+    t.string   "lastname",          limit: 4000
+    t.string   "committeename",     limit: 4000
+    t.string   "phone",             limit: 4000
+    t.string   "extension",         limit: 4000
+    t.boolean  "releasepassword"
+    t.string   "releasepasswordto", limit: 4000
+    t.string   "emailpasswordto",   limit: 4000
+    t.boolean  "signature"
+    t.integer  "office_held_id",    limit: 4
+    t.integer  "office_sought_id",  limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "investment_purchases", force: :cascade do |t|
