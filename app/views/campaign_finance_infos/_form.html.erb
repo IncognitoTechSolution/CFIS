@@ -1,65 +1,259 @@
-<%= form_for(@campaign_finance_info) do |f| %>
-  <% if @campaign_finance_info.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@campaign_finance_info.errors.count, "error") %> prohibited this campaign_finance_info from being saved:</h2>
+<%= form_for(@campaign_finance_info, layout: :inline) do |f| %>
+<div class="container">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <h3>Default collapse with scaling icon</h3>
+    <div class="panel-group wrap" id="bs-collapse">
 
-      <ul>
-      <% @campaign_finance_info.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+      <div class="panel">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#bs-collapse" href="#one">
 
-  <div class="field">
-    <%= f.label :filer_id %><br>
-    <%= f.number_field :filer_id %>
+              General Campaign Information
+            </a>
+          </h4>
+        </div>
+        <div id="one" class="panel-collapse collapse">
+          <div class="panel-body">
+
+            <%= form_for(@campaign_finance_info) do |f| %>
+                <% if @campaign_finance_info.errors.any? %>
+                    <div id="error_explanation">
+                      <h2><%= pluralize(@campaign_finance_info.errors.count, "error") %></h2>
+
+                      <ul>
+                        <% @campaign_finance_info.errors.full_messages.each do |message| %>
+                            <li><%= message %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                <% end %>
+
+                <div class="field">
+                  <%= f.label :filer_id %><br>
+                  <%= f.number_field :filer_id %>
+                </div>
+                <div class="field">
+                  <%= f.label :report_type_id %><br>
+                  <%= f.number_field :report_type_id %>
+                </div>
+                <div class="field">
+                  <%= f.label :candidate_id %><br>
+                  <%= f.number_field :candidate_id %>
+                </div>
+                <div class="field">
+                  <%= f.label :treasurer_id %><br>
+                  <%= f.number_field :treasurer_id %>
+                </div>
+                <div class="field">
+                  <%= f.label :election_type_id %><br>
+                  <%= f.number_field :election_type_id %>
+                </div>
+                <div class="field">
+                  <%= f.label :sudmitdate %><br>
+                  <%= f.date_select :sudmitdate %>
+                </div>
+                <div class="field">
+                  <%= f.label :filename %><br>
+                  <%= f.text_field :filename %>
+                </div>
+                <div class="field">
+                  <%= f.label :campaignyear %><br>
+                  <%= f.text_field :campaignyear %>
+                </div>
+                <div class="field">
+                  <%= f.label :ontime %><br>
+                  <%= f.check_box :ontime %>
+                </div>
+                <div class="field">
+                  <%= f.label :periodbegin %><br>
+                  <%= f.date_select :periodbegin %>
+                </div>
+                <div class="field">
+                  <%= f.label :periodend %><br>
+                  <%= f.date_select :periodend %>
+                </div>
+                <div class="field">
+                  <%= f.label :electiondate %><br>
+                  <%= f.date_select :electiondate %>
+                </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- end of panel -->
+
+      <div class="panel">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#bs-collapse" href="#two">
+              Notice From Committee
+            </a>
+          </h4>
+        </div>
+        <div id="two" class="panel-collapse collapse">
+          <div class="panel-body">
+                  nested un here
+
+          </div>
+
+        </div>
+      </div>
+      <!-- end of panel -->
+
+      <div class="panel">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#bs-collapse" href="#three">
+              Contributions
+            </a>
+          </h4>
+        </div>
+        <div id="three" class="panel-collapse collapse">
+          <div class="panel-body">
+            <div id="Contributions">
+              <%= f.fields_for :contributions do |contribution| %>
+                  <%= render 'contribution_fields', f: contribution %>
+              <% end %>
+              <div class="links">
+                <%= link_to_add_association "Add Contribution", f,:contributions %>
+              </div>
+            </div></br>
+
+          </div>
+        </div>
+      </div>
+      <!-- end of panel -->
+
+      <div class="panel">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#bs-collapse" href="#four">
+              Expenditure
+            </a>
+          </h4>
+        </div>
+        <div id="four" class="panel-collapse collapse in">
+          <div class="panel-body">
+
+            <div id="Expenditures">
+              <%= f.fields_for :expenditures do |expenditure| %>
+                  <%= render 'expenditure_fields', f: expenditure %>
+              <% end %>
+              <div class="links">
+                <%= link_to_add_association "Add Expenditure", f,:expenditures %>
+              </div>
+            </div></br>
+
+          </div>
+        </div>
+      </div>
+      <!-- end of panel -->
+
+      <div class="panel">
+        <div class="panel-heading">
+           <h4 class="panel-title">
+             <a data-toggle="collapse" data-parent="#bs-collapse" href="#five">
+               Loans
+             </a>
+           </h4>
+        </div>
+      <div id="five" class="panel-collapse collapse in">
+        <div class="panel-body">
+
+          <div id="Loans">
+            <%= f.fields_for :loans do |loan| %>
+                <%= render 'loan_fields', f: loan %>
+            <% end %>
+            <div class="links">
+              <%= link_to_add_association "Add Lender", f,:loans %>
+            </div>
+          </div></br>
+        </div>
+      </div>
+      </div>
+                <!-- end of panel -->
+
+      <div class="panel">
+       <div class="panel-heading">
+            <h4 class="panel-title">
+             <a data-toggle="collapse" data-parent="#bs-collapse" href="#six">
+               Payment From Political Contribution to a Business of C/OH
+             </a>
+            </h4>
+           </div>
+          <div id="six" class="panel-collapse collapse in">
+        <div class="panel-body">
+
+          <div id="Loans">
+            <%= f.fields_for :coh_payments do |coh_payment| %>
+                <%= render 'coh_payment_fields', f: coh_payment %>
+            <% end %>
+            <div class="links">
+              <%= link_to_add_association "Add Contribution", f,:coh_payments %>
+            </div>
+          </div></br>
+        </div>
+       </div>
+      </div>
+                <!-- end of panel -->
+
+
+      <div class="panel">
+       <div class="panel-heading">
+        <h4 class="panel-title">
+         <a data-toggle="collapse" data-parent="#bs-collapse" href="#seven">
+           Interest Earned, Other Credits/Gains/Refunds, And Purchase of Investments
+         </a>
+         </h4>
+       </div>
+         <div id="seven" class="panel-collapse collapse in">
+          <div class="panel-body">
+
+            <div id="Loans">
+              <%= f.fields_for :investment_purchases do |investment_purchase| %>
+                  <%= render 'investment_purchase_fields', f: investment_purchase %>
+              <% end %>
+              <div class="links">
+                <%= link_to_add_association "Add Credits", f,:investment_purchases %>
+              </div>
+            </div></br>
+          </div>
+       </div>
+      </div>
+                <!-- end of panel -->
+
+
+                <div class="panel">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#bs-collapse" href="#eight">
+                        Travel
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="eight" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                    Travel info in here
+                    </div>
+                  </div>
+                </div>
+                <!-- end of panel -->
+
+
+
+                </div>
+    <!-- end of #bs-collapse  -->
+
   </div>
-  <div class="field">
-    <%= f.label :report_type_id %><br>
-    <%= f.number_field :report_type_id %>
-  </div>
-  <div class="field">
-    <%= f.label :candidate_id %><br>
-    <%= f.number_field :candidate_id %>
-  </div>
-  <div class="field">
-    <%= f.label :treasurer_id %><br>
-    <%= f.number_field :treasurer_id %>
-  </div>
-  <div class="field">
-    <%= f.label :election_type_id %><br>
-    <%= f.number_field :election_type_id %>
-  </div>
-  <div class="field">
-    <%= f.label :sudmitdate %><br>
-    <%= f.date_select :sudmitdate %>
-  </div>
-  <div class="field">
-    <%= f.label :filename %><br>
-    <%= f.text_field :filename %>
-  </div>
-  <div class="field">
-    <%= f.label :campaignyear %><br>
-    <%= f.text_field :campaignyear %>
-  </div>
-  <div class="field">
-    <%= f.label :ontime %><br>
-    <%= f.check_box :ontime %>
-  </div>
-  <div class="field">
-    <%= f.label :periodbegin %><br>
-    <%= f.date_select :periodbegin %>
-  </div>
-  <div class="field">
-    <%= f.label :periodend %><br>
-    <%= f.date_select :periodend %>
-  </div>
-  <div class="field">
-    <%= f.label :electiondate %><br>
-    <%= f.date_select :electiondate %>
-  </div>
+
+
+
+</div>
+<!-- end of container -->
+
   <div class="actions">
     <%= f.submit %>
   </div>
+<% end %>
 <% end %>

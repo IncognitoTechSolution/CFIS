@@ -1,0 +1,1 @@
+json.array! @committee_types, partial: 'committee_types/committee_type', as: :committee_type

@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  prefix_id: 1
+  firstname: MyString
+  mi: MyString
+  lastname: MyString
+  alias: MyString
+  suffix: MyString
+  phone: MyString
+  extension: MyString
+
+two:
+  prefix_id: 1
+  firstname: MyString
+  mi: MyString
+  lastname: MyString
+  alias: MyString
+  suffix: MyString
+  phone: MyString
+  extension: MyString

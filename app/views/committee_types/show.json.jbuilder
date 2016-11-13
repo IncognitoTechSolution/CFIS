@@ -1,0 +1,1 @@
+json.partial! "committee_types/committee_type", committee_type: @committee_type

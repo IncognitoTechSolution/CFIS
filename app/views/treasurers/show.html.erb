@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Prefix:</strong>
+  <%= @treasurer.prefix_id %>
+</p>
+
+<p>
+  <strong>Firstname:</strong>
+  <%= @treasurer.firstname %>
+</p>
+
+<p>
+  <strong>Mi:</strong>
+  <%= @treasurer.mi %>
+</p>
+
+<p>
+  <strong>Lastname:</strong>
+  <%= @treasurer.lastname %>
+</p>
+
+<p>
+  <strong>Alias:</strong>
+  <%= @treasurer.alias %>
+</p>
+
+<p>
+  <strong>Suffix:</strong>
+  <%= @treasurer.suffix %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @treasurer.phone %>
+</p>
+
+<p>
+  <strong>Extension:</strong>
+  <%= @treasurer.extension %>
+</p>
+
+<%= link_to 'Edit', edit_treasurer_path(@treasurer) %> |
+<%= link_to 'Back', treasurers_path %>

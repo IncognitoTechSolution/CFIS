@@ -1,0 +1,49 @@
+<%= form_for(@treasurer) do |f| %>
+  <% if @treasurer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@treasurer.errors.count, "error") %> prohibited this treasurer from being saved:</h2>
+
+      <ul>
+      <% @treasurer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :prefix_id %><br>
+    <%= f.number_field :prefix_id %>
+  </div>
+  <div class="field">
+    <%= f.label :firstname %><br>
+    <%= f.text_field :firstname %>
+  </div>
+  <div class="field">
+    <%= f.label :mi %><br>
+    <%= f.text_field :mi %>
+  </div>
+  <div class="field">
+    <%= f.label :lastname %><br>
+    <%= f.text_field :lastname %>
+  </div>
+  <div class="field">
+    <%= f.label :alias %><br>
+    <%= f.text_field :alias %>
+  </div>
+  <div class="field">
+    <%= f.label :suffix %><br>
+    <%= f.text_field :suffix %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :extension %><br>
+    <%= f.text_field :extension %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

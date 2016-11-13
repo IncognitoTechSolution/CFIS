@@ -1,0 +1,21 @@
+<%= form_for(@committee_type) do |f| %>
+  <% if @committee_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@committee_type.errors.count, "error") %> prohibited this committee_type from being saved:</h2>
+
+      <ul>
+      <% @committee_type.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :comtype %><br>
+    <%= f.text_field :comtype %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
