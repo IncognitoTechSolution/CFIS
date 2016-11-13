@@ -60,5 +60,101 @@
   <%= @campaign_finance_info.electiondate %>
 </p>
 
+<% if @campaign_finance_info.contributions.present? %>
+    <h4>Contributions</h4>
+    <% @campaign_finance_info.contributions.each do |contribution| %>
+        <strong>Date:</strong>
+        <p><%= contribution.date %></p>
+        <strong>Contributor Type:</strong>
+        <p><%= contribution.contribution_type_id %></p>
+        <strong>Prefix:</strong>
+        <p><%= contribution.prefix_id %></p>
+        <strong>Contributor Name:</strong>
+        <p><%= contribution.contributorname %></p>
+        <strong>Out of State PAC:</strong>
+        <p><%= contribution.isoutofstatepac %></p>
+        <strong>PAC ID #:</strong>
+        <p><%= contribution.pacid %></p>
+        <strong>Contributor Address:</strong>
+        <p><%= contribution.address %></p>
+        <strong>City:</strong>
+        <p><%= contribution.city %></p>
+        <strong>State:</strong>
+        <p><%= contribution.state_id %></p>
+        <strong>Zip Code:</strong>
+        <p><%= contribution.zip %></p>
+        <strong>Contribution Date:</strong>
+        <p><%= contribution.date %></p>
+        <strong>Amount:</strong>
+        <p><%= contribution.amount %></p>
+        <strong>Description:</strong>
+        <p><%= contribution.description %></p>
+
+    <% end %>
+<% else %>
+    <h5>No Contributions For This Report</h5>
+<% end %>
+
+<% if @campaign_finance_info.expenditures.present? %>
+    <h4>Expenditures</h4>
+    <% @campaign_finance_info.expenditures.each do |expenditure| %>
+        <strong>Description:</strong>
+        <p><%= expenditure.description %></p>
+        <strong>Contribution Date:</strong>
+        <p><%= expenditure.date %></p>
+        <strong>Amount:</strong>
+        <p><%= expenditure.amount %></p>
+    <% end %>
+<% else %>
+    <h5>No Expenditure For This Report</h5>
+<% end %>
+
+<% if @campaign_finance_info.loans.present? %>
+    <h4>Loans</h4>
+    <% @campaign_finance_info.loans.each do |loan| %>
+        <strong>Description:</strong>
+        <p><%= loan.description %></p>
+        <strong>Contribution Date:</strong>
+        <p><%= loan.date %></p>
+        <strong>Amount:</strong>
+        <p><%= loan.amount %></p>
+
+    <% end %>
+<% else %>
+    <h5>No Loans For This Report</h5>
+<% end %>
+
+<% if @campaign_finance_info.coh_payments.present? %>
+    <h4>Payments from Political Contribution to Business of C/OH</h4>
+    <% @campaign_finance_info.coh_payments.each do |coh_payment| %>
+        <strong>Description:</strong>
+        <p><%= coh_payment.description %></p>
+        <strong>Contribution Date:</strong>
+        <p><%= coh_payment.date %></p>
+        <strong>Amount:</strong>
+        <p><%= coh_payment.amount %></p>
+
+    <% end %>
+<% else %>
+    <h5>No Payments from Political Contribution to Business of C/OH For This Report</h5>
+<% end %>
+
+<% if @campaign_finance_info.credits.present? %>
+    <h4>Interests Earned</h4>
+    <% @campaign_finance_info.credits.each do |credit| %>
+        <strong>Description:</strong>
+        <p><%= credit.description %></p>
+        <strong>Contribution Date:</strong>
+        <p><%= credit.date %></p>
+        <strong>Amount:</strong>
+        <p><%= credit.amount %></p>
+
+    <% end %>
+<% else %>
+    <h5>No Interest Earned For This Report</h5>
+<% end %>
+
+
+
 <%= link_to 'Edit', edit_campaign_finance_info_path(@campaign_finance_info) %> |
 <%= link_to 'Back', campaign_finance_infos_path %>
