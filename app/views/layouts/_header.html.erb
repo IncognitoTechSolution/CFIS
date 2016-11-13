@@ -1,0 +1,32 @@
+<div class="container example5">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar5">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="http://localhost:3000/"><img style="	width: 80px;" src="assets/citylogo.jpg" alt="CFIS">CFIS
+        </a>
+      </div>
+      <div id="navbar5" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <% if current_user %>
+              <li><%= link_to "New Campaign Report", new_campaign_finance_info_path %></li>
+              <li><%= link_to "Settings", edit_user_registration_path %></li>
+              <li><%= link_to "Log Out", destroy_user_session_path, :method => :delete %></li>
+
+
+          <% else %>
+              <li><%= link_to "Login", new_user_session_path %></li></ul>
+          <% end %>
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+    <!--/.container-fluid -->
+  </nav>
+
+</div>

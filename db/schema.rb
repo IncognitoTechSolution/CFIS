@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161112205215) do
+ActiveRecord::Schema.define(version: 20161113032229) do
 
   create_table "address_types", force: :cascade do |t|
     t.string   "adtype",     limit: 4000
@@ -32,20 +32,27 @@ ActiveRecord::Schema.define(version: 20161112205215) do
   end
 
   create_table "campaign_finance_infos", force: :cascade do |t|
-    t.integer  "filer_id",         limit: 4
-    t.integer  "report_type_id",   limit: 4
-    t.integer  "candidate_id",     limit: 4
-    t.integer  "treasurer_id",     limit: 4
-    t.integer  "election_type_id", limit: 4
+    t.integer  "filer_id",          limit: 4
+    t.integer  "report_type_id",    limit: 4
+    t.integer  "candidate_id",      limit: 4
+    t.integer  "treasurer_id",      limit: 4
+    t.integer  "election_type_id",  limit: 4
     t.date     "sudmitdate"
-    t.string   "filename",         limit: 4000
-    t.string   "campaignyear",     limit: 4000
+    t.string   "filename",          limit: 4000
+    t.string   "campaignyear",      limit: 4000
     t.boolean  "ontime"
     t.date     "periodbegin"
     t.date     "periodend"
     t.date     "electiondate"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.boolean  "noticecheck"
+    t.boolean  "contributioncheck"
+    t.boolean  "expenditurecheck"
+    t.boolean  "loancheck"
+    t.boolean  "paytocohcheck"
+    t.boolean  "creditcheck"
+    t.boolean  "travelcheck"
   end
 
   create_table "candidates", force: :cascade do |t|
@@ -271,5 +278,21 @@ ActiveRecord::Schema.define(version: 20161112205215) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email",               limit: 4000, default: "", null: false
+    t.string   "encrypted_password",  limit: 4000, default: "", null: false
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",       limit: 4,    default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip",  limit: 4000
+    t.string   "last_sign_in_ip",     limit: 4000
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
+    t.boolean  "admin"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
 
 end
