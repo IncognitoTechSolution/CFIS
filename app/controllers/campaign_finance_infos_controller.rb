@@ -1,6 +1,6 @@
 class CampaignFinanceInfosController < ApplicationController
   before_action :set_campaign_finance_info, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, except: [:index, :show]
   # GET /campaign_finance_infos
   # GET /campaign_finance_infos.json
   def index
@@ -14,7 +14,7 @@ class CampaignFinanceInfosController < ApplicationController
 
   # GET /campaign_finance_infos/new
   def new
-    @campaign_finance_info = CampaignFinanceInfo.new
+    @campaign_finance_info = current_user.campaign_finance_infos.build
   end
 
   # GET /campaign_finance_infos/1/edit
@@ -24,7 +24,7 @@ class CampaignFinanceInfosController < ApplicationController
   # POST /campaign_finance_infos
   # POST /campaign_finance_infos.json
   def create
-    @campaign_finance_info = CampaignFinanceInfo.new(campaign_finance_info_params)
+    @campaign_finance_info = current_user.campaign_finance_infos.build(campaign_finance_info_params)
 
     respond_to do |format|
       if @campaign_finance_info.save

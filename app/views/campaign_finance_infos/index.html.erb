@@ -24,7 +24,7 @@
   <tbody>
     <% @campaign_finance_infos.each do |campaign_finance_info| %>
       <tr>
-        <td><%= campaign_finance_info.filer_id %></td>
+        <td><%= campaign_finance_info.user.email %></td>
         <td><%= campaign_finance_info.report_type_id %></td>
         <td><%= campaign_finance_info.candidate_id %></td>
         <td><%= campaign_finance_info.treasurer_id %></td>
@@ -37,8 +37,10 @@
         <td><%= campaign_finance_info.periodend %></td>
         <td><%= campaign_finance_info.electiondate %></td>
         <td><%= link_to 'Show', campaign_finance_info %></td>
-        <td><%= link_to 'Edit', edit_campaign_finance_info_path(campaign_finance_info) %></td>
-        <td><%= link_to 'Destroy', campaign_finance_info, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if user_signed_in? %>
+            <td><%= link_to 'Edit', edit_campaign_finance_info_path(campaign_finance_info) %></td>
+            <td><%= link_to 'Destroy', campaign_finance_info, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

@@ -3,6 +3,7 @@ class CampaignFinanceInfo < ActiveRecord::Base
   belongs_to :treasurer
   belongs_to :election_type
   belongs_to :report_type
+  belongs_to :user
 
 
   has_many :contributions

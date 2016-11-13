@@ -142,3 +142,13 @@ a:active {
   transform: rotate(0deg);
   transition: all 0.5s;
 }
+
+.table-bordered {
+  border-style: solid;
+  border-width: 2px 10px 4px 20px;
+  border-color: #000000;
+}
+table th, td {
+  border: 1px solid black;
+  border-spacing: 3px;
+  letter-spacing: -1px; }

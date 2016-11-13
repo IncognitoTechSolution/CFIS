@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161113032229) do
+ActiveRecord::Schema.define(version: 20161113045950) do
 
   create_table "address_types", force: :cascade do |t|
     t.string   "adtype",     limit: 4000
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20161113032229) do
     t.boolean  "paytocohcheck"
     t.boolean  "creditcheck"
     t.boolean  "travelcheck"
+    t.integer  "user_id",           limit: 4
   end
 
   create_table "candidates", force: :cascade do |t|
