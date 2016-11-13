@@ -1,12 +1,15 @@
 <p id="notice"><%= notice %></p>
-
+<p>
+  <strong>Report Name:</strong>
+  <%= @campaign_finance_info.filename %>
+</p>
 <p>
   <strong>Filer:</strong>
   <%= @campaign_finance_info.filer_id %>
 </p>
 
 <p>
-  <strong>Report type:</strong>
+  <strong>Report Type:</strong>
   <%= @campaign_finance_info.report_type_id %>
 </p>
 
@@ -21,22 +24,16 @@
 </p>
 
 <p>
-  <strong>Election type:</strong>
+  <strong>Election Type:</strong>
   <%= @campaign_finance_info.election_type_id %>
 </p>
 
 <p>
-  <strong>Sudmitdate:</strong>
+  <strong>Sudmit Date:</strong>
   <%= @campaign_finance_info.sudmitdate %>
 </p>
-
 <p>
-  <strong>Filename:</strong>
-  <%= @campaign_finance_info.filename %>
-</p>
-
-<p>
-  <strong>Campaignyear:</strong>
+  <strong>Campaign Year:</strong>
   <%= @campaign_finance_info.campaignyear %>
 </p>
 
@@ -59,107 +56,241 @@
   <strong>Electiondate:</strong>
   <%= @campaign_finance_info.electiondate %>
 </p>
-
-<table class="table table-bordered">
-<% if @campaign_finance_info.contributions.present? %>
-    <h4>Contributions</h4>
-    <% @campaign_finance_info.contributions.each do |contribution| %>
-<div class="row"> <strong>Date:</strong>
-        <p><%= contribution.date %></p> </div>
-<div class="col-md-2"><strong>Contributor Type:</strong>
-        <p><%= contribution.contribution_type_id %></p></div>
-<div class="row"><strong>Prefix:</strong>
-        <p><%= contribution.prefix_id %></p></div>
-<div class="col-md-2"> <strong>Contributor Name:</strong>
-        <p><%= contribution.contributorname %></p></div>
-<div class="col-md-2"><strong>Out of State PAC:</strong>
-        <p><%= contribution.isoutofstatepac %></p></div>
-<div class="col-md-2"><strong>PAC ID #:</strong>
-        <p><%= contribution.pacid %></p></div>
-<div class="col-md-2"><strong>Contributor Address:</strong>
-        <p><%= contribution.address %></p></div>
-<div class="col-md-2"> <strong>City:</strong>
-        <p><%= contribution.city %></p></div>
-<div class="col-md-2"><strong>State:</strong>
-        <p><%= contribution.state_id %></p></div>
-<div class="col-md-2"> <strong>Zip Code:</strong>
-        <p><%= contribution.zip %></p></div>
-<div class="col-md-2"><strong>Contribution Date:</strong>
-        <p><%= contribution.date %></p></div>
-<div class="col-md-2"><strong>Amount:</strong>
-        <p><%= contribution.amount %></p></div>
-<div class="col-md-2"><strong>Description:</strong>
-        <p><%= contribution.description %></p></div><br>
-
-    <% end %>
-<% else %>
-    <h5>No Contributions For This Report</h5>
-<% end %>
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<table>
+  <% if @campaign_finance_info.contributions.present? %>
+      <h4>Contributions</h4>
+      <% @campaign_finance_info.contributions.each do |contribution| %>
+          <thead>
+          <tr>
+            <th>Date</th>
+            <th>Contributor Type</th>
+            <th>Prefix</th>
+            <th>Contributor Name</th>
+            <th>Out of State PAC</th>
+            <th>PAC ID #</th>
+            <th>Contributor Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip Code</th>
+            <th>Amount</th>
+            <th>Description</th>
+            <th colspan="3"></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><%= contribution.date  %></td>
+            <td><%= contribution.contribution_type_id %></td>
+            <td><%= contribution.prefix_id %></td>
+            <td><%= contribution.contributorname %></td>
+            <td><%= contribution.isoutofstatepac %></td>
+            <td><%= contribution.pacid %></td>
+            <td><%= contribution.address %></td>
+            <td><%= contribution.city %></td>
+            <td><%= contribution.state_id %></td>
+            <td><%= contribution.zip %></td>
+            <td><%= contribution.amount %></td>
+            <td><%= contribution.description %></td>
+          </tr>
+          </tbody>
+      <% end %>
+      </table>
+  <% else %>
+      <h5>No Contributions For This Report</h5>
+  <% end %>
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<table>
+  <% if @campaign_finance_info.expenditures.present? %>
+      <h4>Expenditures</h4>
+      <% @campaign_finance_info.expenditures.each do |expenditure| %>
+  <thead>
+  <tr>
+    <th>Expend type</th>
+    <th>Expend category</th>
+    <th>Payment method</th>
+    <th>Prefix</th>
+    <th>Entity type</th>
+    <th>Contributorname</th>
+    <th>Address</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Zip</th>
+    <th>Amount</th>
+    <th>Date</th>
+    <th>Description</th>
+    <th>Isbenefitcoh</th>
+    <th>Istraveloutsidetx</th>
+    <th>Isreimbursementintended</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><%= expenditure.expend_type_id %></td>
+        <td><%= expenditure.expend_category_id %></td>
+        <td><%= expenditure.payment_method_id %></td>
+        <td><%= expenditure.prefix_id %></td>
+        <td><%= expenditure.entity_type_id %></td>
+        <td><%= expenditure.contributorname %></td>
+        <td><%= expenditure.address %></td>
+        <td><%= expenditure.city %></td>
+        <td><%= expenditure.state_id %></td>
+        <td><%= expenditure.zip %></td>
+        <td><%= expenditure.amount %></td>
+        <td><%= expenditure.date %></td>
+        <td><%= expenditure.description %></td>
+        <td><%= expenditure.isbenefitCOH %></td>
+        <td><%= expenditure.istraveloutsidetx %></td>
+        <td><%= expenditure.isreimbursementintended %></td>
+      </tr>
+  </tbody>
+  <% end %>
 </table>
-
-<% if @campaign_finance_info.expenditures.present? %>
-    <h4>Expenditures</h4>
-    <% @campaign_finance_info.expenditures.each do |expenditure| %>
-        <strong>Description:</strong>
-        <p><%= expenditure.description %></p>
-        <strong>Contribution Date:</strong>
-        <p><%= expenditure.date %></p>
-        <strong>Amount:</strong>
-        <p><%= expenditure.amount %></p>
+  <% else %>
+      <h5>No Expenditure For This Report</h5>
+  <% end %>
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<table>
+    <% if @campaign_finance_info.loans.present? %>
+        <h4>Loans</h4>
+        <% @campaign_finance_info.loans.each do |loan| %>
+            <thead>
+            <tr>
+              <th>Prefix</th>
+              <th>Entity type</th>
+              <th>Lendername</th>
+              <th>Address</th>
+              <th>City</th>
+              <th>State</th>
+              <th>Zip</th>
+              <th>Isfinancialinstitution</th>
+              <th>Isoutofstatpac</th>
+              <th>Pacid</th>
+              <th>Amount</th>
+              <th>Interestrate</th>
+              <th>Date</th>
+              <th>Maturitydate</th>
+              <th>Collateraldescription</th>
+              <th>Ispersonalfunddeposit</th>
+              <th colspan="3"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td><%= loan.prefix_id %></td>
+              <td><%= loan.entity_type_id %></td>
+              <td><%= loan.lendername %></td>
+              <td><%= loan.address %></td>
+              <td><%= loan.city %></td>
+              <td><%= loan.state_id %></td>
+              <td><%= loan.zip %></td>
+              <td><%= loan.isfinancialinstitution %></td>
+              <td><%= loan.isoutofstatpac %></td>
+              <td><%= loan.pacid %></td>
+              <td><%= loan.amount %></td>
+              <td><%= loan.interestrate %></td>
+              <td><%= loan.date %></td>
+              <td><%= loan.maturitydate %></td>
+              <td><%= loan.collateraldescription %></td>
+              <td><%= loan.ispersonalfunddeposit %></td>
+            </tr>
+            </tbody>
+        <% end %>
+        </table>
+    <% else %>
+        <h5>No Loans For This Report</h5>
     <% end %>
-<% else %>
-    <h5>No Expenditure For This Report</h5>
-<% end %>
-
-<% if @campaign_finance_info.loans.present? %>
-    <h4>Loans</h4>
-    <% @campaign_finance_info.loans.each do |loan| %>
-        <strong>Description:</strong>
-        <p><%= loan.description %></p>
-        <strong>Contribution Date:</strong>
-        <p><%= loan.date %></p>
-        <strong>Amount:</strong>
-        <p><%= loan.amount %></p>
-
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<table>
+    <% if @campaign_finance_info.coh_payments.present?%>
+        <h4>Payments from Political Contribution to Business of C/OH</h4>
+        <% @campaign_finance_info.coh_payments.each do |coh_payment| %>
+            <thead>
+            <tr>
+              <th>Expend category</th>
+              <th>Prefix</th>
+              <th>Entity type</th>
+              <th>Businessname</th>
+              <th>Address</th>
+              <th>City</th>
+              <th>State</th>
+              <th>Zip</th>
+              <th>Amount</th>
+              <th>Date</th>
+              <th>Description</th>
+              <th>Isbenefitcoh</th>
+              <th>Istraveloutsidetx</th>
+              <th>Isaustintxlivingexpense</th>
+              <th colspan="3"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td><%= coh_payment.expend_category_id %></td>
+              <td><%= coh_payment.prefix_id %></td>
+              <td><%= coh_payment.entity_type_id %></td>
+              <td><%= coh_payment.businessname %></td>
+              <td><%= coh_payment.address %></td>
+              <td><%= coh_payment.city %></td>
+              <td><%= coh_payment.state_id %></td>
+              <td><%= coh_payment.zip %></td>
+              <td><%= coh_payment.amount %></td>
+              <td><%= coh_payment.date %></td>
+              <td><%= coh_payment.description %></td>
+              <td><%= coh_payment.isbenefitcoh %></td>
+              <td><%= coh_payment.istraveloutsidetx %></td>
+              <td><%= coh_payment.isaustintxlivingexpense %></td>
+            </tr>
+            </tbody>
+        <% end %>
+        </table>
+    <% else %>
+        <h5>No Payments from Political Contribution to Business of C/OH For This Report</h5>
     <% end %>
-<% else %>
-    <h5>No Loans For This Report</h5>
-<% end %>
-
-<div class="row">
-<% if @campaign_finance_info.coh_payments.present? %>
-    <h4>Payments from Political Contribution to Business of C/OH</h4>
-    <% @campaign_finance_info.coh_payments.each do |coh_payment| %>
-        <strong>Description:</strong>
-        <p><%= coh_payment.description %></p>
-        <strong>Contribution Date:</strong>
-        <p><%= coh_payment.date %></p>
-        <strong>Amount:</strong>
-        <p><%= coh_payment.amount %></p>
-
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<table>
+    <% if @campaign_finance_info.credits.present?%>
+        <h4>Payments from Political Contribution to Business of C/OH</h4>
+        <% @campaign_finance_info.credits.each do |credit| %>
+            <thead>
+            <tr>
+              <th>Prefix</th>
+              <th>Entity type</th>
+              <th>Creditorname</th>
+              <th>Address</th>
+              <th>City</th>
+              <th>State</th>
+              <th>Zip</th>
+              <th>Amount</th>
+              <th>Date</th>
+              <th>Purpose</th>
+              <th>Isreturnedtofiler</th>
+              <th colspan="3"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td><%= credit.campaign_finance_info_id %></td>
+              <td><%= credit.prefix_id %></td>
+              <td><%= credit.entity_type_id %></td>
+              <td><%= credit.creditorname %></td>
+              <td><%= credit.address %></td>
+              <td><%= credit.city %></td>
+              <td><%= credit.state_id %></td>
+              <td><%= credit.zip %></td>
+              <td><%= credit.amount %></td>
+              <td><%= credit.date %></td>
+              <td><%= credit.purpose %></td>
+              <td><%= credit.isreturnedtofiler %></td>
+            </tr>
+            </tbody>
+        <% end %>
+        </table>
+    <% else %>
+        <h5>No Interest Earned For This Report</h5>
     <% end %>
-<% else %>
-    <h5>No Payments from Political Contribution to Business of C/OH For This Report</h5>
-<% end %>
-</div>
-
-<div class="row">
-<% if @campaign_finance_info.credits.present? %>
-    <h4>Interests Earned</h4>
-    <% @campaign_finance_info.credits.each do |credit| %>
-        <strong>Description:</strong>
-        <p><%= credit.description %></p>
-        <strong>Contribution Date:</strong>
-        <p><%= credit.date %></p>
-        <strong>Amount:</strong>
-        <p><%= credit.amount %></p>
-
-    <% end %>
-<% else %>
-    <h5>No Interest Earned For This Report</h5>
-<% end %>
-</div>
-
-
-<%= link_to 'Edit', edit_campaign_finance_info_path(@campaign_finance_info) %> |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--
+<%= link_to 'Edit', edit_campaign_finance_info_path(@campaign_finance_info) %>
 <%= link_to 'Back', campaign_finance_infos_path %>
