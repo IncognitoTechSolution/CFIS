@@ -1,4 +1,4 @@
-<%= form_for @campaign_finance_info,:validate => true do |f| %>
+<%= form_for(@campaign_finance_info, layout: :inline) do |f| %>
 <div class="container">
 
   <div class="col-md-12 col-sm-12 col-xs-12">
@@ -17,7 +17,6 @@
         <div id="one" class="panel-collapse collapse">
           <div class="panel-body">
 
-
             <%= form_for @campaign_finance_info,:validate => true do |f| %>
                 <% if @campaign_finance_info.errors.any? %>
                     <div id="error_explanation">
@@ -32,48 +31,50 @@
                 <% end %>
                 <div class ="row">
                 <div class="col-md-6">
-                  *<%= f.label :report_type_id %><br>
+                   <%= f.label :filename, 'Report Name' %>
+                   <%= f.text_field :filename %>
+                </div>
+                <div class="col-md-6">
+                  <%= f.label :report_type_id, 'Report Type' %>
                   <%= f.collection_select :report_type_id, ReportType.all, :id, :rtype,{ prompt: "Select One" } %>
                 </div>
                 <div class="col-md-6">
-                  <%= f.label :candidate_id %><br>
+                  <%= f.label :candidate_id %>
                   <%= collection_select :campaign_finance_info, :candidate_id, Candidate.all.collect { |f| [ f.id, "#{f.firstname} #{f.lastname}" ] }, :first, :last, { prompt: "Select a Candidate" } %>
                 </div>
                 <div class="col-md-6">
-                  <%= f.label :treasurer_id %><br>
+                  <%= f.label :treasurer_id %>
                   <%= collection_select :campaign_finance_info, :treasurer_id, Treasurer.all.collect { |f| [ f.id, "#{f.firstname} #{f.lastname}" ] }, :first, :last, { prompt: "Select a Filer" }%>
                 </div>
                 <div class="col-md-6">
-                  <%= f.label :election_type_id %><br>
-                  <%= f.collection_select :election_type_id, ElectionType.all, :id, :ectype,{ prompt: "Select One" } %>
-                </div>
-                <div class="col-md-6">
-                  <%= f.label :sudmitdate %><br>
-                  <%= f.date_select :sudmitdate %>
-                </div>
-                <div class="col-md-6">
-                  <%= f.label :filename %><br>
-                  <%= f.text_field :filename %>
-                </div>
-                <div class="col-md-6">
-                  <%= f.label :campaignyear %><br>
+                  <%= f.label :campaignyear, 'Campaign Year', size:"10x2" %>
                   <%= f.text_field :campaignyear %>
                 </div>
                 <div class="col-md-6">
-                  <%= f.label :ontime %><br>
-                  <%= f.check_box :ontime %>
-                </div>
-                <div class="col-md-6">
-                  <%= f.label :periodbegin %><br>
+                  <h4 style="color:blue;">Period Covered</h4>
+                  <%= f.label :periodbegin,'Beginning Date' %>
                   <%= f.date_select :periodbegin %>
                 </div>
+                  <div class="col-md-6">
+                    <%= f.label :sudmitdate, 'Date to Submit By' %>
+                    <%= f.date_select :sudmitdate %>
+                  </div>
                 <div class="col-md-6">
-                  <%= f.label :periodend %><br>
-                  <%= f.date_select :periodend %>
-                </div>
-                <div class="col-md-6">
-                  <%= f.label :electiondate %><br>
+                  <h4 style="color:blue;">Election</h4>
+                  <%= f.label :electiondate, 'Election Date' %>
                   <%= f.date_select :electiondate %>
+                </div>
+                  <div class="col-md-6">
+                    <%= f.label :periodend, 'Ending Date' %>
+                    <%= f.date_select :periodend %>
+                  </div>
+                  <div class="col-md-6">
+                    <%= f.label :election_type_id, 'Election Type' %>
+                    <%= f.collection_select :election_type_id, ElectionType.all, :id, :ectype,{ prompt: "Select One" } %>
+                  </div><br><br><br>
+                <div class="col-md-6">
+                   <%= f.label :ontime, 'By checking this box you are indication report will be submitted on time.' %><br>
+                   <%= f.check_box :ontime %>
                 </div>
                 </div>
           </div>
@@ -85,12 +86,12 @@
       <div class="panel">
         <div class="panel-heading">
           <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#bs-collapse" href="#one">
+            <a data-toggle="collapse" data-parent="#bs-collapse" href="#two">
               Notice From Committee
             </a>
           </h4>
         </div>
-        <div id="one" class="panel-collapse collapse">
+        <div id="two" class="panel-collapse collapse">
           <div class="panel-body">
             <div id="NoticeFromCom">
               <%= f.fields_for :committee_notices do |committee_notice| %>
@@ -110,12 +111,12 @@
       <div class="panel">
         <div class="panel-heading">
           <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#bs-collapse" href="#two">
+            <a data-toggle="collapse" data-parent="#bs-collapse" href="#three">
               Contributions
             </a>
           </h4>
         </div>
-        <div id="two" class="panel-collapse collapse">
+        <div id="three" class="panel-collapse collapse">
           <div class="panel-body">
             <div id="Contributions">
               <%= f.fields_for :contributions do |contribution| %>
@@ -134,12 +135,12 @@
       <div class="panel">
         <div class="panel-heading">
           <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#bs-collapse" href="#three">
+            <a data-toggle="collapse" data-parent="#bs-collapse" href="#four">
               Expenditure
             </a>
           </h4>
         </div>
-        <div id="three" class="panel-collapse collapse in">
+        <div id="four" class="panel-collapse collapse in">
           <div class="panel-body">
 
             <div id="Expenditures">
@@ -159,12 +160,12 @@
       <div class="panel">
         <div class="panel-heading">
            <h4 class="panel-title">
-             <a data-toggle="collapse" data-parent="#bs-collapse" href="#four">
+             <a data-toggle="collapse" data-parent="#bs-collapse" href="#five">
                Loans
              </a>
            </h4>
         </div>
-      <div id="four" class="panel-collapse collapse in">
+      <div id="five" class="panel-collapse collapse in">
         <div class="panel-body">
 
           <div id="Loans">
@@ -183,12 +184,12 @@
       <div class="panel">
        <div class="panel-heading">
             <h4 class="panel-title">
-             <a data-toggle="collapse" data-parent="#bs-collapse" href="#five">
+             <a data-toggle="collapse" data-parent="#bs-collapse" href="#six">
                Payment From Political Contribution to a Business of C/OH
              </a>
             </h4>
            </div>
-          <div id="five" class="panel-collapse collapse in">
+          <div id="six" class="panel-collapse collapse in">
         <div class="panel-body">
 
           <div id="COH Payments">
@@ -207,12 +208,12 @@
                 <div class="panel">
                   <div class="panel-heading">
                     <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#bs-collapse" href="#six">
+                      <a data-toggle="collapse" data-parent="#bs-collapse" href="#seven">
                         Purchase of Investments
                       </a>
                     </h4>
                   </div>
-                  <div id="six" class="panel-collapse collapse in">
+                  <div id="seven" class="panel-collapse collapse in">
                     <div class="panel-body">
 
                       <div id="Investment Purchases">
@@ -234,12 +235,12 @@
       <div class="panel">
        <div class="panel-heading">
         <h4 class="panel-title">
-         <a data-toggle="collapse" data-parent="#bs-collapse" href="#seven">
+         <a data-toggle="collapse" data-parent="#bs-collapse" href="#eight">
            Interest Earned, Other Credits/Gains/Refunds
          </a>
          </h4>
        </div>
-         <div id="seven" class="panel-collapse collapse in">
+         <div id="eight" class="panel-collapse collapse in">
           <div class="panel-body">
 
             <div id="Credits">
@@ -259,12 +260,12 @@
                 <div class="panel">
                   <div class="panel-heading">
                     <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#bs-collapse" href="#eight">
+                      <a data-toggle="collapse" data-parent="#bs-collapse" href="#nine">
                         Travel
                       </a>
                     </h4>
                   </div>
-                  <div id="eight" class="panel-collapse collapse in">
+                  <div id="nine" class="panel-collapse collapse in">
                     <div class="panel-body">
                       <div id="Travels">
                         <%= f.fields_for :travels do |travel| %>
