@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :committee_notices
+  resources :travels
+  resources :form_types
   resources :filers
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users

@@ -12,6 +12,8 @@ class CampaignFinanceInfo < ActiveRecord::Base
   has_many :investment_purchases
   has_many :credits
   has_many :loans
+  has_many :committee_notices
+  has_many :travels
 
 
   accepts_nested_attributes_for :contributions, reject_if: :all_blank, allow_destroy: true
@@ -19,6 +21,9 @@ class CampaignFinanceInfo < ActiveRecord::Base
   accepts_nested_attributes_for :loans, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :coh_payments, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :investment_purchases, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :credits, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :committee_notices, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :travels, reject_if: :all_blank, allow_destroy: true
 
 
 

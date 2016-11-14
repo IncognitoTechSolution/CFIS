@@ -28,58 +28,80 @@
                       </ul>
                     </div>
                 <% end %>
-
-                <div class="field">
-                  <%= f.label :filer_id %><br>
-                  <%= f.number_field :filer_id %>
-                </div>
-                <div class="field">
+                <div class ="row">
+                <div class="col-md-6">
                   <%= f.label :report_type_id %><br>
-                  <%= f.number_field :report_type_id %>
+                  <%= f.collection_select :report_type_id, ReportType.all, :id, :rtype,{ prompt: "Select One" } %>
                 </div>
-                <div class="field">
+                <div class="col-md-6">
                   <%= f.label :candidate_id %><br>
-                  <%= f.number_field :candidate_id %>
+                  <%= collection_select :campaign_finance_info, :candidate_id, Candidate.all.collect { |f| [ f.id, "#{f.firstname} #{f.lastname}" ] }, :first, :last, { prompt: "Select a Candidate" } %>
                 </div>
-                <div class="field">
+                <div class="col-md-6">
                   <%= f.label :treasurer_id %><br>
-                  <%= f.number_field :treasurer_id %>
+                  <%= collection_select :campaign_finance_info, :treasurer_id, Treasurer.all.collect { |f| [ f.id, "#{f.firstname} #{f.lastname}" ] }, :first, :last, { prompt: "Select a Filer" }%>
                 </div>
-                <div class="field">
+                <div class="col-md-6">
                   <%= f.label :election_type_id %><br>
-                  <%= f.number_field :election_type_id %>
+                  <%= f.collection_select :election_type_id, ElectionType.all, :id, :ectype,{ prompt: "Select One" } %>
                 </div>
-                <div class="field">
+                <div class="col-md-6">
                   <%= f.label :sudmitdate %><br>
                   <%= f.date_select :sudmitdate %>
                 </div>
-                <div class="field">
+                <div class="col-md-6">
                   <%= f.label :filename %><br>
                   <%= f.text_field :filename %>
                 </div>
-                <div class="field">
+                <div class="col-md-6">
                   <%= f.label :campaignyear %><br>
                   <%= f.text_field :campaignyear %>
                 </div>
-                <div class="field">
+                <div class="col-md-6">
                   <%= f.label :ontime %><br>
                   <%= f.check_box :ontime %>
                 </div>
-                <div class="field">
+                <div class="col-md-6">
                   <%= f.label :periodbegin %><br>
                   <%= f.date_select :periodbegin %>
                 </div>
-                <div class="field">
+                <div class="col-md-6">
                   <%= f.label :periodend %><br>
                   <%= f.date_select :periodend %>
                 </div>
-                <div class="field">
+                <div class="col-md-6">
                   <%= f.label :electiondate %><br>
                   <%= f.date_select :electiondate %>
+                </div>
                 </div>
           </div>
         </div>
 
+      </div>
+      <!-- end of panel -->
+
+      <div class="panel">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#bs-collapse" href="#one">
+              Notice From Committee
+            </a>
+          </h4>
+        </div>
+        <div id="one" class="panel-collapse collapse">
+          <div class="panel-body">
+            <div id="NoticeFromCom">
+              <%= f.fields_for :committee_notices do |committee_notice| %>
+                  <%= render 'committee_notice_fields', f: committee_notice %>
+              <% end %>
+              <div class="links">
+                <%= link_to_add_association "Add Notice", f,:committee_notices %>
+              </div>
+            </div></br>
+
+          </div>
+
+        </div>
       </div>
       <!-- end of panel -->
 
@@ -87,29 +109,11 @@
         <div class="panel-heading">
           <h4 class="panel-title">
             <a data-toggle="collapse" data-parent="#bs-collapse" href="#two">
-              Notice From Committee
-            </a>
-          </h4>
-        </div>
-        <div id="two" class="panel-collapse collapse">
-          <div class="panel-body">
-                  nested un here
-
-          </div>
-
-        </div>
-      </div>
-      <!-- end of panel -->
-
-      <div class="panel">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#bs-collapse" href="#three">
               Contributions
             </a>
           </h4>
         </div>
-        <div id="three" class="panel-collapse collapse">
+        <div id="two" class="panel-collapse collapse">
           <div class="panel-body">
             <div id="Contributions">
               <%= f.fields_for :contributions do |contribution| %>
@@ -128,12 +132,12 @@
       <div class="panel">
         <div class="panel-heading">
           <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#bs-collapse" href="#four">
+            <a data-toggle="collapse" data-parent="#bs-collapse" href="#three">
               Expenditure
             </a>
           </h4>
         </div>
-        <div id="four" class="panel-collapse collapse in">
+        <div id="three" class="panel-collapse collapse in">
           <div class="panel-body">
 
             <div id="Expenditures">
@@ -153,12 +157,12 @@
       <div class="panel">
         <div class="panel-heading">
            <h4 class="panel-title">
-             <a data-toggle="collapse" data-parent="#bs-collapse" href="#five">
+             <a data-toggle="collapse" data-parent="#bs-collapse" href="#four">
                Loans
              </a>
            </h4>
         </div>
-      <div id="five" class="panel-collapse collapse in">
+      <div id="four" class="panel-collapse collapse in">
         <div class="panel-body">
 
           <div id="Loans">
@@ -177,15 +181,15 @@
       <div class="panel">
        <div class="panel-heading">
             <h4 class="panel-title">
-             <a data-toggle="collapse" data-parent="#bs-collapse" href="#six">
+             <a data-toggle="collapse" data-parent="#bs-collapse" href="#five">
                Payment From Political Contribution to a Business of C/OH
              </a>
             </h4>
            </div>
-          <div id="six" class="panel-collapse collapse in">
+          <div id="five" class="panel-collapse collapse in">
         <div class="panel-body">
 
-          <div id="Loans">
+          <div id="COH Payments">
             <%= f.fields_for :coh_payments do |coh_payment| %>
                 <%= render 'coh_payment_fields', f: coh_payment %>
             <% end %>
@@ -198,24 +202,50 @@
       </div>
                 <!-- end of panel -->
 
+                <div class="panel">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#bs-collapse" href="#six">
+                        Purchase of Investments
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="six" class="panel-collapse collapse in">
+                    <div class="panel-body">
+
+                      <div id="Investment Purchases">
+                        <%= f.fields_for :investment_purchases do |investment_purchase| %>
+                            <%= render 'investment_purchase_fields', f: investment_purchase %>
+                        <% end %>
+                        <div class="links">
+                          <%= link_to_add_association "Add Investments", f,:investment_purchases %>
+                        </div>
+                      </div></br>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
 
       <div class="panel">
        <div class="panel-heading">
         <h4 class="panel-title">
          <a data-toggle="collapse" data-parent="#bs-collapse" href="#seven">
-           Interest Earned, Other Credits/Gains/Refunds, And Purchase of Investments
+           Interest Earned, Other Credits/Gains/Refunds
          </a>
          </h4>
        </div>
          <div id="seven" class="panel-collapse collapse in">
           <div class="panel-body">
 
-            <div id="Loans">
-              <%= f.fields_for :investment_purchases do |investment_purchase| %>
-                  <%= render 'investment_purchase_fields', f: investment_purchase %>
+            <div id="Credits">
+              <%= f.fields_for :credits do |credit| %>
+                  <%= render 'credit_fields', f: credit %>
               <% end %>
               <div class="links">
-                <%= link_to_add_association "Add Credits", f,:investment_purchases %>
+                <%= link_to_add_association "Add Credits", f,:credits %>
               </div>
             </div></br>
           </div>
@@ -234,7 +264,14 @@
                   </div>
                   <div id="eight" class="panel-collapse collapse in">
                     <div class="panel-body">
-                    Travel info in here
+                      <div id="Travels">
+                        <%= f.fields_for :travels do |travel| %>
+                            <%= render 'travel_fields', f: travel %>
+                        <% end %>
+                        <div class="links">
+                          <%= link_to_add_association "Add Travel", f,:travels %>
+                        </div>
+                      </div></br>
                     </div>
                   </div>
                 </div>

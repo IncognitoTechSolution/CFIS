@@ -1,61 +1,94 @@
 <p id="notice"><%= notice %></p>
-<p>
+<div class ="row">
+  <div class="col-md-5"><p>
   <strong>Report Name:</strong>
   <%= @campaign_finance_info.filename %>
-</p>
-<p>
+</p></div>
+  <div class="col-md-5"><p>
   <strong>Filer:</strong>
   <%= @campaign_finance_info.filer_id %>
-</p>
+</p></div>
 
-<p>
+  <div class="col-md-5"><p>
   <strong>Report Type:</strong>
   <%= @campaign_finance_info.report_type_id %>
-</p>
+</p></div>
 
-<p>
+  <div class="col-md-5"><p>
   <strong>Candidate:</strong>
   <%= @campaign_finance_info.candidate_id %>
-</p>
+</p></div>
 
-<p>
+  <div class="col-md-5"><p>
   <strong>Treasurer:</strong>
   <%= @campaign_finance_info.treasurer_id %>
-</p>
+</p></div>
 
-<p>
+  <div class="col-md-5"><p>
   <strong>Election Type:</strong>
   <%= @campaign_finance_info.election_type_id %>
-</p>
+</p></div>
 
-<p>
+  <div class="col-md-5"><p>
   <strong>Sudmit Date:</strong>
   <%= @campaign_finance_info.sudmitdate %>
-</p>
-<p>
+</p></div>
+  <div class="col-md-5"><p>
   <strong>Campaign Year:</strong>
   <%= @campaign_finance_info.campaignyear %>
-</p>
+</p></div>
 
-<p>
+  <div class="col-md-5"><p>
   <strong>Ontime:</strong>
   <%= @campaign_finance_info.ontime %>
-</p>
-
-<p>
+</p></div>
+  <div class="col-md-5"><p>
   <strong>Periodbegin:</strong>
   <%= @campaign_finance_info.periodbegin %>
-</p>
+</p></div>
 
-<p>
+  <div class="col-md-5"><p>
   <strong>Periodend:</strong>
   <%= @campaign_finance_info.periodend %>
-</p>
+</p></div>
 
-<p>
+  <div class="col-md-5"><p>
   <strong>Electiondate:</strong>
   <%= @campaign_finance_info.electiondate %>
-</p>
+</p></div>
+</div>
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<table>
+  <% if @campaign_finance_info.committee_notices.present? %>
+      <h4>Notice From Committee</h4>
+      <% @campaign_finance_info.committee_notices.each do |committee_notice| %>
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Committee Type</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip</th>
+            <th colspan="3"></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><%= committee_notice.name %></td>
+            <td><%= committee_notice.committee_type_id %></td>
+            <td><%= committee_notice.address %></td>
+            <td><%= committee_notice.city %></td>
+            <td><%= committee_notice.state_id %></td>
+            <td><%= committee_notice.zip %></td>
+          </tr>
+          </tbody>
+      <% end %>
+      </table>
+  <% else %>
+      <h5>No Notice From Committee(s)</h5>
+  <% end %>
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 <table>
   <% if @campaign_finance_info.contributions.present? %>
@@ -292,5 +325,46 @@
     <% end %>
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --
+  <table>
+    <% if @campaign_finance_info.travels.present?%>
+        <h4>Travel</h4>
+        <% @campaign_finance_info.travels.each do |travel| %>
+            <thead>
+            <tr>
+              <th>Name</th>
+              <th>Form type</th>
+              <th>Travelbegin</th>
+              <th>Travelend</th>
+              <th>Prefix</th>
+              <th>Travelername</th>
+              <th>Departureloc</th>
+              <th>Destinationloc</th>
+              <th>Transportation</th>
+              <th>Purpose</th>
+              <th colspan="3"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td><%= travel.name %></td>
+              <td><%= travel.form_type_id %></td>
+              <td><%= travel.travelbegin %></td>
+              <td><%= travel.travelend %></td>
+              <td><%= travel.prefix_id %></td>
+              <td><%= travel.travelername %></td>
+              <td><%= travel.departureloc %></td>
+              <td><%= travel.destinationloc %></td>
+              <td><%= travel.transportation %></td>
+              <td><%= travel.purpose %></td>
+            </tr>
+            </tbody>
+        <% end %>
+  </table>
+    <% else %>
+        <h5>No Travel(s) For This Report</h5>
+    <% end %>
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--
+
 <%= link_to 'Edit', edit_campaign_finance_info_path(@campaign_finance_info) %>
 <%= link_to 'Back', campaign_finance_infos_path %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161113211744) do
+ActiveRecord::Schema.define(version: 20161114190855) do
 
   create_table "address_types", force: :cascade do |t|
     t.string   "adtype",     limit: 4000
@@ -90,6 +90,18 @@ ActiveRecord::Schema.define(version: 20161113211744) do
     t.boolean  "isaustintxlivingexpense"
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
+  end
+
+  create_table "committee_notices", force: :cascade do |t|
+    t.integer  "campaign_finance_info_id", limit: 4
+    t.integer  "committee_type_id",        limit: 4
+    t.string   "name",                     limit: 4000
+    t.string   "address",                  limit: 4000
+    t.string   "city",                     limit: 4000
+    t.integer  "state_id",                 limit: 4
+    t.string   "zip",                      limit: 4000
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   create_table "committee_types", force: :cascade do |t|
@@ -211,6 +223,12 @@ ActiveRecord::Schema.define(version: 20161113211744) do
     t.datetime "updated_at",                     null: false
   end
 
+  create_table "form_types", force: :cascade do |t|
+    t.string   "formtype",   limit: 4000
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
   create_table "investment_purchases", force: :cascade do |t|
     t.integer  "campaign_finance_info_id", limit: 4
     t.integer  "prefix_id",                limit: 4
@@ -283,6 +301,22 @@ ActiveRecord::Schema.define(version: 20161113211744) do
     t.string   "state",      limit: 4000
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+  end
+
+  create_table "travels", force: :cascade do |t|
+    t.integer  "campaign_finance_info_id", limit: 4
+    t.string   "name",                     limit: 4000
+    t.integer  "form_type_id",             limit: 4
+    t.date     "travelbegin"
+    t.date     "travelend"
+    t.integer  "prefix_id",                limit: 4
+    t.string   "travelername",             limit: 4000
+    t.string   "departureloc",             limit: 4000
+    t.string   "destinationloc",           limit: 4000
+    t.string   "transportation",           limit: 4000
+    t.text     "purpose",                  limit: 2147483647
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
   end
 
   create_table "treasurers", force: :cascade do |t|
