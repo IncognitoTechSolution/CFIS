@@ -1,0 +1,2 @@
+json.extract! committee_notice, :id, :campaign_finance_info_id, :committee_type_id, :name, :address, :city, :state_id, :zip, :created_at, :updated_at
+json.url committee_notice_url(committee_notice, format: :json)

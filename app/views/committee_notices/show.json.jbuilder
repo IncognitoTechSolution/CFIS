@@ -1,0 +1,1 @@
+json.partial! "committee_notices/committee_notice", committee_notice: @committee_notice

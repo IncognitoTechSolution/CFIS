@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Committee Notices</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Campaign finance info</th>
+      <th>Committee type</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @committee_notices.each do |committee_notice| %>
+      <tr>
+        <td><%= committee_notice.campaign_finance_info_id %></td>
+        <td><%= committee_notice.committee_type_id %></td>
+        <td><%= committee_notice.name %></td>
+        <td><%= committee_notice.address %></td>
+        <td><%= committee_notice.city %></td>
+        <td><%= committee_notice.state_id %></td>
+        <td><%= committee_notice.zip %></td>
+        <td><%= link_to 'Show', committee_notice %></td>
+        <td><%= link_to 'Edit', edit_committee_notice_path(committee_notice) %></td>
+        <td><%= link_to 'Destroy', committee_notice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Committee notice', new_committee_notice_path %>

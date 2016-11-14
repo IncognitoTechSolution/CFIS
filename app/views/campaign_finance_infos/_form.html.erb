@@ -1,5 +1,6 @@
-<%= form_for(@campaign_finance_info, layout: :inline) do |f| %>
+<%= form_for @campaign_finance_info,:validate => true do |f| %>
 <div class="container">
+
   <div class="col-md-12 col-sm-12 col-xs-12">
     <h3></h3>
     <div class="panel-group wrap" id="bs-collapse">
@@ -16,7 +17,8 @@
         <div id="one" class="panel-collapse collapse">
           <div class="panel-body">
 
-            <%= form_for(@campaign_finance_info) do |f| %>
+
+            <%= form_for @campaign_finance_info,:validate => true do |f| %>
                 <% if @campaign_finance_info.errors.any? %>
                     <div id="error_explanation">
                       <h2><%= pluralize(@campaign_finance_info.errors.count, "error") %></h2>
@@ -30,7 +32,7 @@
                 <% end %>
                 <div class ="row">
                 <div class="col-md-6">
-                  <%= f.label :report_type_id %><br>
+                  *<%= f.label :report_type_id %><br>
                   <%= f.collection_select :report_type_id, ReportType.all, :id, :rtype,{ prompt: "Select One" } %>
                 </div>
                 <div class="col-md-6">
@@ -290,7 +292,10 @@
 <!-- end of container -->
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Submit Report',:class => "btn btn-default" %>
   </div>
+                <div class="actions">
+                  <%= f.submit 'Preview Report',:class => "btn btn-default" %>
+                </div>
 <% end %>
 <% end %>

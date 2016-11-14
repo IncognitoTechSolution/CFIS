@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Form Types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Formtype</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @form_types.each do |form_type| %>
+      <tr>
+        <td><%= form_type.formtype %></td>
+        <td><%= link_to 'Show', form_type %></td>
+        <td><%= link_to 'Edit', edit_form_type_path(form_type) %></td>
+        <td><%= link_to 'Destroy', form_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Form type', new_form_type_path %>

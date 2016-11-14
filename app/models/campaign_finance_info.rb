@@ -15,6 +15,10 @@ class CampaignFinanceInfo < ActiveRecord::Base
   has_many :committee_notices
   has_many :travels
 
+  validates_presence_of :filename
+  validates_presence_of :campaignyear
+
+
 
   accepts_nested_attributes_for :contributions, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :expenditures, reject_if: :all_blank, allow_destroy: true
@@ -24,7 +28,5 @@ class CampaignFinanceInfo < ActiveRecord::Base
   accepts_nested_attributes_for :credits, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :committee_notices, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :travels, reject_if: :all_blank, allow_destroy: true
-
-
 
 end

@@ -1,0 +1,1 @@
+json.array! @committee_notices, partial: 'committee_notices/committee_notice', as: :committee_notice

@@ -1,0 +1,69 @@
+<%= form_for @filer,:validate => true do |f| %>
+  <% if @filer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@filer.errors.count, "error") %> prohibited this filer from being saved:</h2>
+
+      <ul>
+      <% @filer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :filer_type_id %><br>
+    <%= f.number_field :filer_type_id %>
+  </div>
+  <div class="field">
+    <%= f.label :firstname %><br>
+    <%= f.text_field :firstname %>
+  </div>
+  <div class="field">
+    <%= f.label :mi %><br>
+    <%= f.text_field :mi %>
+  </div>
+  <div class="field">
+    <%= f.label :lastname %><br>
+    <%= f.text_field :lastname %>
+  </div>
+  <div class="field">
+    <%= f.label :committeename %><br>
+    <%= f.text_field :committeename %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :extension %><br>
+    <%= f.text_field :extension %>
+  </div>
+  <div class="field">
+    <%= f.label :releasepassword %><br>
+    <%= f.check_box :releasepassword %>
+  </div>
+  <div class="field">
+    <%= f.label :releasepasswordto %><br>
+    <%= f.text_field :releasepasswordto %>
+  </div>
+  <div class="field">
+    <%= f.label :emailpasswordto %><br>
+    <%= f.text_field :emailpasswordto %>
+  </div>
+  <div class="field">
+    <%= f.label :signature %><br>
+    <%= f.check_box :signature %>
+  </div>
+  <div class="field">
+    <%= f.label :office_held_id %><br>
+    <%= f.number_field :office_held_id %>
+  </div>
+  <div class="field">
+    <%= f.label :office_sought_id %><br>
+    <%= f.number_field :office_sought_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

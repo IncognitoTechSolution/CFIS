@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  filer_type_id: 1
+  firstname: MyString
+  mi: MyString
+  lastname: MyString
+  committeename: MyString
+  phone: MyString
+  extension: MyString
+  releasepassword: false
+  releasepasswordto: MyString
+  emailpasswordto: MyString
+  signature: false
+  office_held_id: 1
+  office_sought_id: 1
+
+two:
+  filer_type_id: 1
+  firstname: MyString
+  mi: MyString
+  lastname: MyString
+  committeename: MyString
+  phone: MyString
+  extension: MyString
+  releasepassword: false
+  releasepasswordto: MyString
+  emailpasswordto: MyString
+  signature: false
+  office_held_id: 1
+  office_sought_id: 1

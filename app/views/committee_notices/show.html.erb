@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Campaign finance info:</strong>
+  <%= @committee_notice.campaign_finance_info_id %>
+</p>
+
+<p>
+  <strong>Committee type:</strong>
+  <%= @committee_notice.committee_type_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @committee_notice.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @committee_notice.address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @committee_notice.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @committee_notice.state_id %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @committee_notice.zip %>
+</p>
+
+<%= link_to 'Edit', edit_committee_notice_path(@committee_notice) %> |
+<%= link_to 'Back', committee_notices_path %>

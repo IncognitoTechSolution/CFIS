@@ -1,0 +1,61 @@
+<%= form_for(@travel) do |f| %>
+  <% if @travel.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@travel.errors.count, "error") %> prohibited this travel from being saved:</h2>
+
+      <ul>
+      <% @travel.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :campaign_finance_info_id %><br>
+    <%= f.number_field :campaign_finance_info_id %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :form_type_id %><br>
+    <%= f.number_field :form_type_id %>
+  </div>
+  <div class="field">
+    <%= f.label :travelbegin %><br>
+    <%= f.date_select :travelbegin %>
+  </div>
+  <div class="field">
+    <%= f.label :travelend %><br>
+    <%= f.date_select :travelend %>
+  </div>
+  <div class="field">
+    <%= f.label :prefix_id %><br>
+    <%= f.number_field :prefix_id %>
+  </div>
+  <div class="field">
+    <%= f.label :travelername %><br>
+    <%= f.text_field :travelername %>
+  </div>
+  <div class="field">
+    <%= f.label :departureloc %><br>
+    <%= f.text_field :departureloc %>
+  </div>
+  <div class="field">
+    <%= f.label :destinationloc %><br>
+    <%= f.text_field :destinationloc %>
+  </div>
+  <div class="field">
+    <%= f.label :transportation %><br>
+    <%= f.text_field :transportation %>
+  </div>
+  <div class="field">
+    <%= f.label :purpose %><br>
+    <%= f.text_area :purpose %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
