@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161114190855) do
+ActiveRecord::Schema.define(version: 20161115163353) do
 
   create_table "address_types", force: :cascade do |t|
     t.string   "adtype",     limit: 4000
@@ -20,15 +20,15 @@ ActiveRecord::Schema.define(version: 20161114190855) do
   end
 
   create_table "addresses", force: :cascade do |t|
-    t.integer  "state_id",      limit: 4
-    t.integer  "address_type",  limit: 4
-    t.string   "address",       limit: 4000
-    t.string   "suiteapt",      limit: 4000
-    t.string   "city",          limit: 4000
-    t.string   "zipcode",       limit: 4000
+    t.integer  "state_id",        limit: 4
+    t.integer  "address_type_id", limit: 4
+    t.string   "address",         limit: 4000
+    t.string   "suiteapt",        limit: 4000
+    t.string   "city",            limit: 4000
+    t.string   "zipcode",         limit: 4000
     t.boolean  "addresschange"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "campaign_finance_infos", force: :cascade do |t|
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20161114190855) do
     t.boolean  "creditcheck"
     t.boolean  "travelcheck"
     t.integer  "user_id",           limit: 4
+    t.boolean  "investmentcheck"
   end
 
   create_table "candidates", force: :cascade do |t|
@@ -265,6 +266,8 @@ ActiveRecord::Schema.define(version: 20161114190855) do
     t.boolean  "ispersonalfunddeposit"
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
+    t.string   "guarantor",                limit: 4000
+    t.float    "amountguaranteed"
   end
 
   create_table "office_helds", force: :cascade do |t|

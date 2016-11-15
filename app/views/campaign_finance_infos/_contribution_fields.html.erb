@@ -2,7 +2,7 @@
   <div class ="row">
   <div class="col-md-3">
     <%= f.label :contribution_type_id %><br>
-    <%= f.number_field :contribution_type_id %>
+    <%= f.collection_select :contribution_type_id, ContributionType.all, :id, :contype,{ prompt: "Select One" } %>
   </div>
   <div class="col-md-3">
     <%= f.label :prefix_id %><br>
