@@ -29,4 +29,14 @@ class CampaignFinanceInfo < ActiveRecord::Base
   accepts_nested_attributes_for :committee_notices, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :travels, reject_if: :all_blank, allow_destroy: true
 
+
+  def self.search_by_last_name(query)
+    where("lastname LIKE ?", query)
+  end
+
+  def self.search_by_first_name(query)
+    where("firstname LIKE ?", query)
+  end
+
+
 end

@@ -1,0 +1,29 @@
+<div class="jumbotron text-center">
+  <h1>City of Houston</h1>
+  <h4>Search for Campaign Finance Reports</h4>
+</div>
+<div class="text-center">
+  <span class="last">Last Name</span>
+  <span class="first">First Name</span>
+</div>
+<%= form_tag(results_path, method: "get", id: 'search-form', class: 'form-inline text-center') do %>
+    <div class="form-group">
+      <span class="form-label">Candidate</span>
+      <%= text_field_tag :candidate_last_name, params[:candidate_last_name], placeholder: "Search by Last Name", class: 'form-control search' %>
+      OR
+      <%= text_field_tag :candidate_first_name, params[:candidate_first_name], placeholder: "Search by First Name", class: 'form-control search' %>
+    </div>
+    <br>
+    <div class="form-group">
+      <span class="form-label">Treasurer</span>
+      <%= text_field_tag :treasurer_last_name, params[:treasurer_last_name], placeholder: "Search by Last Name", class: 'form-control search' %>
+      OR
+      <%= text_field_tag :treasurer_first_name, params[:treasurer_first_name], placeholder: "Search by First Name", class: 'form-control search' %>
+    </div>
+
+    <div class="form-row">
+      <%= submit_tag 'Search', class: 'btn btn-primary submit'%>
+    </div>
+<% end %>
+
+

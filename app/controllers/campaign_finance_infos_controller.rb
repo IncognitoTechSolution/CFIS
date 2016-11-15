@@ -1,6 +1,6 @@
 class CampaignFinanceInfosController < ApplicationController
   before_action :set_campaign_finance_info, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  #before_action :authenticate_user!, except: [:index, :show]
   # GET /campaign_finance_infos
   # GET /campaign_finance_infos.json
   def index
@@ -10,6 +10,16 @@ class CampaignFinanceInfosController < ApplicationController
   # GET /campaign_finance_infos/1
   # GET /campaign_finance_infos/1.json
   def show
+    @campaign_finance_info = CampaignFinanceInfo.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = CampaignFinanceInfoPdf.new(@campaign_finance_info, params[:by])
+        send_data pdf.render, filename: "CampaignInfo.pdf",
+                  type: "application/pdf",
+                  disposition: "inline"
+      end
+    end
   end
 
   # GET /campaign_finance_infos/new
@@ -58,6 +68,21 @@ class CampaignFinanceInfosController < ApplicationController
     respond_to do |format|
       format.html { redirect_to campaign_finance_infos_url, notice: 'Campaign finance info was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def search
+  end
+
+  def results
+    unless params[:candidate_first_name].empty? && params[:candidate_last_name].empty? && params[:treasurer_first_name].empty? && params[:treasurer_last_name].empty?
+      @by_candidate = CampaignFinanceInfo.joins(:candidate).search_by_first_name(params[:candidate_first_name]) if params[:candidate_first_name].present?
+      @by_candidate = CampaignFinanceInfo.joins(:candidate).search_by_last_name(params[:candidate_last_name]) if params[:candidate_last_name].present?
+
+      @by_treasurer = CampaignFinanceInfo.joins(:treasurer).search_by_first_name(params[:treasurer_first_name]) if params[:treasurer_first_name].present?
+      @by_treasurer = CampaignFinanceInfo.joins(:treasurer).search_by_last_name(params[:treasurer_last_name]) if params[:treasurer_last_name].present?
+    else
+      @empty = true
     end
   end
 

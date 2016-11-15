@@ -1,0 +1,73 @@
+<% if @empty == true %>
+    <h1>Sorry, but your search was empty.</h1>
+<% elsif @by_candidate.blank? && @by_treasurer.blank? %>
+    <h1>Sorry, but there are no matches for your search.</h1>
+<% elsif @by_candidate %>
+    <div class="jumbotron">
+      <h1>City of Houston</h1>
+      <h2>Candidate Search Record</h2>
+    </div>
+    <table class="results">
+      <thead>
+      <tr>
+        <th>PDF</th>
+        <th>Candidate First Name</th>
+        <th>Candidate Last Name</th>
+        <th>Contribution Amount</th>
+        <th>Report</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @by_candidate.each do |result| %>
+          <% result.contributions.each do |contribution| %>
+              <tr>
+                <td><%= link_to "PDF", campaign_finance_info_path(result, format: 'pdf', by: 'candidate'), class: 'btn btn-success'  %></td>
+                <td><%= result.candidate.firstname %></td>
+                <td><%= result.candidate.lastname %></td>
+                <td><%= contribution.amount %></td>
+                <td><%= link_to "Report", campaign_finance_info_path(result), class: 'btn btn-primary' %></td>
+              </tr>
+          <% end %>
+      <% end %>
+      </tbody>
+    </table>
+<% elsif @by_treasurer %>
+
+    <div class="jumbotron">
+      <h1>City of Houston</h1>
+      <h2>Treasurer Search Record</h2>
+    </div>
+    <table class="results">
+      <thead>
+      <tr>
+        <th>PDF</th>
+        <th>Treasurer First Name</th>
+        <th>Treasurer Last Name</th>
+        <th>Candidate First Name</th>
+        <th>Candidate Last Name</th>
+        <th>Contribution Amount</th>
+        <th>Report</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @by_treasurer.each do |result| %>
+          <%#=campaign finance infos have a has_many association with contributions. here we are creating a row of results for each of the campaign finance info's contribution  %>
+          <% result.contributions.each do |contribution| %>
+              <tr>
+                <td><%= link_to "PDF", campaign_finance_info_path(result, format: 'pdf', by: 'treasurer'), class: 'btn btn-success'  %></td>
+                <td><%= result.treasurer.firstname %></td>
+                <td><%= result.treasurer.lastname %></td>
+                <td><%= result.candidate.firstname %></td>
+                <td><%= result.candidate.lastname %></td>
+                <td><%= contribution.amount %></td>
+                <td><%= link_to "Report", campaign_finance_info_path(result), class: 'btn btn-primary' %></td>
+              </tr>
+          <% end %>
+      <% end %>
+      </tbody>
+    </table>
+<% end %>
+<%= link_to "Back", :back, class: 'btn btn-primary'  %>
+

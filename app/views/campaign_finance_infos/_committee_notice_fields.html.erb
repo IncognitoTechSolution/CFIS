@@ -1,19 +1,15 @@
 <div class="nested-fields">
   <div class ="row">
   <div class="col-md-3">
-    <%= f.label :campaign_finance_info_id %><br>
-    <%= f.number_field :campaign_finance_info_id %>
-  </div>
-  <div class="col-md-3">
-    <%= f.label :committee_type_id %><br>
+    <%= f.label :committee_type_id, size: "30x2" %><br>
     <%= f.number_field :committee_type_id %>
   </div>
   <div class="col-md-3">
-    <%= f.label :name %><br>
+    <%= f.label :name, 'Committee Name',size: "30x2" %><br>
     <%= f.text_field :name %>
   </div>
   <div class="col-md-3">
-    <%= f.label :address %><br>
+    <%= f.label :address,'Committee Add' %><br>
     <%= f.text_field :address %>
   </div>
   <div class="col-md-3">

@@ -14,12 +14,14 @@
       <div id="navbar5" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
           <% if current_user %>
+              <li><%= link_to "Search", search_query_path %></li>
               <li><%= link_to "New Campaign Report", new_campaign_finance_info_path %></li>
               <li><%= link_to "Candidate Registration", registration_path %></li>
               <li><%= link_to "Log Out", destroy_user_session_path, :method => :delete %></li>
 
 
           <% else %>
+              <li><%= link_to "Search", search_query_path %></li>
               <li><%= link_to "Login", new_user_session_path %></li></ul>
           <% end %>
         </ul>
