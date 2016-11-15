@@ -8,7 +8,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="http://localhost:3000/"><img style="	width: 80px;" src="assets/citylogo.png" alt="CFIS">CFIS
+        <a class="navbar-brand" href="http://localhost:3000/"><img style="	width: 80px;" src="assets/citylogo.png" alt="CFIS">COH-CFAM
         </a>
       </div>
       <div id="navbar5" class="navbar-collapse collapse">
@@ -18,6 +18,7 @@
               <li><%= link_to "Search", search_query_path %></li>
               <li><%= link_to "New Campaign Report", new_campaign_finance_info_path %></li>
               <li><%= link_to "Log Out", destroy_user_session_path, :method => :delete %></li>
+              <li><%= link_to "Admin", rails_admin_path %></li>
 
 
           <% else %>
