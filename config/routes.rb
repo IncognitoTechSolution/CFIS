@@ -34,12 +34,16 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#home'
+  authenticated :user do
+    root :to => 'welcome#loginhome', as: :authenticated_root
+  end
+  root :to => 'welcome#home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
   get 'report', to: 'welcome#report'
   get 'registration', to: 'welcome#registration'
+  get 'loginhome', to: 'welcome#loginhome'
 
   get '/search' => "campaign_finance_infos#search", as: 'search_query'
   get '/results' => "campaign_finance_infos#results"
