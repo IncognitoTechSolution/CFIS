@@ -1,21 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Campaign Finance Infos</h1>
+<h1> Campaign Finance Information Reports</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Report type</th>
-      <th>Candidate</th>
-      <th>Treasurer</th>
-      <th>Election type</th>
-      <th>Sudmitdate</th>
-      <th>Filename</th>
-      <th>Campaignyear</th>
-      <th>Ontime</th>
-      <th>Periodbegin</th>
-      <th>Periodend</th>
-      <th>Electiondate</th>
+      <th>Report Name</th>
+      <th>Report Type</th>
+      <th>Election Type</th>
+      <th>Candidate Full</th>
+      <th>Name</th>
+      <th>Treasurer Full</th>
+      <th>Name</th>
+      <th>Date to Submit</th>
+      <th>Campaign Year</th>
+      <th>Period Begin</th>
+      <th>Period End</th>
+      <th>Election Date</th>
+      <th>Report On Time</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -23,21 +25,23 @@
   <tbody>
     <% @campaign_finance_infos.each do |campaign_finance_info| %>
       <tr>
-        <td><%= campaign_finance_info.report_type_id %></td>
-        <td><%= campaign_finance_info.candidate_id %></td>
-        <td><%= campaign_finance_info.treasurer_id %></td>
-        <td><%= campaign_finance_info.election_type_id %></td>
-        <td><%= campaign_finance_info.sudmitdate %></td>
         <td><%= campaign_finance_info.filename %></td>
+        <td><%= campaign_finance_info.report_type.rptype rescue "" %></td>
+        <td><%= campaign_finance_info.election_type.ectype rescue "" %></td>
+        <td><%= campaign_finance_info.candidate.firstname rescue "" %></td>
+        <td><%= campaign_finance_info.candidate.lastname rescue "" %></td>
+        <td><%= campaign_finance_info.treasurer.firstname rescue "" %></td>
+        <td><%= campaign_finance_info.treasurer.lastname rescue "" %></td>
+        <td><%= campaign_finance_info.sudmitdate %></td>
         <td><%= campaign_finance_info.campaignyear %></td>
-        <td><%= campaign_finance_info.ontime %></td>
         <td><%= campaign_finance_info.periodbegin %></td>
         <td><%= campaign_finance_info.periodend %></td>
         <td><%= campaign_finance_info.electiondate %></td>
+        <td><%= campaign_finance_info.ontime %></td>
         <td><%= link_to 'Show', campaign_finance_info %></td>
         <% if user_signed_in? %>
-            <td><%= link_to 'Edit', edit_campaign_finance_info_path(campaign_finance_info) %></td>
-            <td><%= link_to 'Destroy', campaign_finance_info, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Edit Report', edit_campaign_finance_info_path(campaign_finance_info) %></td>
+            <td><%= link_to 'Delete Report', campaign_finance_info, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>
@@ -46,4 +50,4 @@
 
 <br>
 
-<%= link_to 'New Campaign finance info', new_campaign_finance_info_path %>
+<%= link_to 'New', new_campaign_finance_info_path,class: "btn btn-warning right_button_section" %>

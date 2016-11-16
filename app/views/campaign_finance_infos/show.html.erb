@@ -5,28 +5,31 @@
   <%= @campaign_finance_info.filename %>
 </p></div>
   <div class="col-md-5"><p>
-  <strong>Filer:</strong>
-  <%= @campaign_finance_info.filer_id %>
-</p></div>
-
-  <div class="col-md-5"><p>
   <strong>Report Type:</strong>
-  <%= @campaign_finance_info.report_type_id %>
+  <%= @campaign_finance_info.report_type_id rescue "" %>
 </p></div>
 
   <div class="col-md-5"><p>
-  <strong>Candidate:</strong>
-  <%= @campaign_finance_info.candidate_id %>
+  <strong>Candidate First Name:</strong>
+  <%= @campaign_finance_info.candidate.firstname rescue"" %>
 </p></div>
+  <div class="col-md-5"><p>
+    <strong>Candidate Last Name:</strong>
+    <%= @campaign_finance_info.candidate.lastname rescue "" %>
+  </p></div>
 
   <div class="col-md-5"><p>
-  <strong>Treasurer:</strong>
-  <%= @campaign_finance_info.treasurer_id %>
+  <strong>Treasurer First Name:</strong>
+  <%= @campaign_finance_info.treasurer.firstname rescue "" %>
 </p></div>
+  <div class="col-md-5"><p>
+    <strong>Treasurer Last Name:</strong>
+    <%= @campaign_finance_info.treasurer.lastname rescue "" %>
+  </p></div>
 
   <div class="col-md-5"><p>
   <strong>Election Type:</strong>
-  <%= @campaign_finance_info.election_type_id %>
+  <%= @campaign_finance_info.election_type_id rescue "" %>
 </p></div>
 
   <div class="col-md-5"><p>
@@ -39,24 +42,24 @@
 </p></div>
 
   <div class="col-md-5"><p>
-  <strong>Ontime:</strong>
-  <%= @campaign_finance_info.ontime %>
-</p></div>
-  <div class="col-md-5"><p>
-  <strong>Periodbegin:</strong>
+  <strong>Period Begin:</strong>
   <%= @campaign_finance_info.periodbegin %>
 </p></div>
 
   <div class="col-md-5"><p>
-  <strong>Periodend:</strong>
+  <strong>Period End:</strong>
   <%= @campaign_finance_info.periodend %>
 </p></div>
 
   <div class="col-md-5"><p>
-  <strong>Electiondate:</strong>
+  <strong>Election Date:</strong>
   <%= @campaign_finance_info.electiondate %>
 </p></div>
 </div>
+<div class="col-md-5"><p>
+  <strong>Report Submitted On Time:</strong>
+  <%= @campaign_finance_info.ontime %>
+</p></div>
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 <table>
@@ -77,10 +80,10 @@
           <tbody>
           <tr>
             <td><%= committee_notice.name %></td>
-            <td><%= committee_notice.committee_type_id %></td>
+            <td><%= committee_type.comtype rescue "" %></td>
             <td><%= committee_notice.address %></td>
             <td><%= committee_notice.city %></td>
-            <td><%= committee_notice.state_id %></td>
+            <td><%= committee_notice.state.state rescue "" %></td>
             <td><%= committee_notice.zip %></td>
           </tr>
           </tbody>
@@ -114,7 +117,7 @@
           <tbody>
           <tr>
             <td><%= contribution.date  %></td>
-            <td><%= contribution.contribution_type_id %></td>
+            <td><%= contribution.contribution_type.contype rescue "" %></td>
             <td><%= contribution.prefix_id %></td>
             <td><%= contribution.contributorname %></td>
             <td><%= contribution.isoutofstatepac %></td>

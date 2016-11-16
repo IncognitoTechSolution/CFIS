@@ -36,7 +36,7 @@
                 </div>
                 <div class="col-md-6">
                   <%= f.label :report_type_id, 'Report Type' %>
-                  <%= f.collection_select :report_type_id, ReportType.all, :id, :rtype,{ prompt: "Select One" }%>
+                  <%= f.collection_select :report_type_id, ReportType.all, :id, :rptype,{ prompt: "Select One" }%>
                 </div>
                 <div class="col-md-6">
                   <%= f.label :candidate_id %>
@@ -44,7 +44,7 @@
                 </div>
                 <div class="col-md-6">
                   <%= f.label :treasurer_id %>
-                  <%= collection_select :campaign_finance_info, :treasurer_id, Treasurer.all.collect { |f| [ f.id, "#{f.firstname} #{f.lastname}" ] }, :first, :last, { prompt: "Select a Filer" }%>
+                  <%= collection_select :campaign_finance_info, :treasurer_id, Treasurer.all.collect { |f| [ f.id, "#{f.firstname} #{f.lastname}" ] }, :first, :last, { prompt: "Select a Treasurer" }%>
                 </div>
                 <div class="col-md-6">
                   <%= f.label :campaignyear, 'Campaign Year', size:"10x2" %>

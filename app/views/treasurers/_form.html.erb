@@ -13,34 +13,34 @@
 
   <div class="field">
     <%= f.label :prefix_id %><br>
-    <%= f.number_field :prefix_id %>
+    <%= f.collection_select :prefix_id, Prefix.all, :id, :prefix,{ prompt: "Select One" }%>
   </div>
   <div class="field">
-    <%= f.label :firstname %><br>
+    <%= f.label :firstname, 'First Name' %><br>
     <%= f.text_field :firstname %>
   </div>
   <div class="field">
-    <%= f.label :mi %><br>
+    <%= f.label :mi, 'Middle Initial' %><br>
     <%= f.text_field :mi %>
   </div>
   <div class="field">
-    <%= f.label :lastname %><br>
+    <%= f.label :lastname, 'Last Name' %><br>
     <%= f.text_field :lastname %>
   </div>
   <div class="field">
-    <%= f.label :alias %><br>
+    <%= f.label :alias, 'Alias' %><br>
     <%= f.text_field :alias %>
   </div>
   <div class="field">
-    <%= f.label :suffix %><br>
+    <%= f.label :suffix, 'Suffix' %><br>
     <%= f.text_field :suffix %>
   </div>
   <div class="field">
-    <%= f.label :phone %><br>
+    <%= f.label :phone, 'Phone' %><br>
     <%= f.text_field :phone %>
   </div>
   <div class="field">
-    <%= f.label :extension %><br>
+    <%= f.label :extension, 'Extension' %><br>
     <%= f.text_field :extension %>
   </div>
   <div class="actions">
