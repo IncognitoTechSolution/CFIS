@@ -59,18 +59,82 @@
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </div>
-  <div class="field">
-    <%= f.label :isbenefitcoh %><br>
-    <%= f.check_box :isbenefitcoh %>
-  </div>
-  <div class="field">
+
+    <% case $c_isbenefitcoh %>
+
+    <% when '1' %>
+
+      <div class="field">
+        <%= f.label :isbenefitcoh %><br>
+        <%= f.check_box :isbenefitcoh, :checked => true %>
+      </div>
+
+    <% when '0' %>
+
+        <div class="field">
+          <%= f.label :isbenefitcoh %><br>
+          <%= f.check_box :isbenefitcoh, :checked => false %>
+        </div>
+
+    <% else %>
+
+        <div class="field">
+          <%= f.label :isbenefitcoh %><br>
+          <%= f.check_box :isbenefitcoh, :checked => false %>
+        </div>
+
+        <% end %>
+
+    <% case $c_istraveloutsidetx %>
+
+    <% when '1' %>
+
+        <div class="field">
     <%= f.label :istraveloutsidetx %><br>
-    <%= f.check_box :istraveloutsidetx %>
+    <%= f.check_box :istraveloutsidetx, :checked => true %>
   </div>
-  <div class="field">
-    <%= f.label :isaustintxlivingexpense %><br>
-    <%= f.check_box :isaustintxlivingexpense %>
-  </div>
+
+    <% when '0' %>
+
+        <div class="field">
+          <%= f.label :istraveloutsidetx %><br>
+          <%= f.check_box :istraveloutsidetx, :checked => false %>
+        </div>
+
+    <% else %>
+
+        <div class="field">
+          <%= f.label :istraveloutsidetx %><br>
+          <%= f.check_box :istraveloutsidetx, :checked => false %>
+        </div>
+
+     <% end %>
+
+        <% case $c_isaustintxlivingexpense %>
+
+        <% when '1' %>
+
+        <div class="field">
+          <%= f.label :isaustintxlivingexpense %><br>
+          <%= f.check_box :isaustintxlivingexpense, :checked => true %>
+        </div>
+
+        <% when '0' %>
+
+            <div class="field">
+              <%= f.label :isaustintxlivingexpense %><br>
+              <%= f.check_box :isaustintxlivingexpense, :checked => false %>
+            </div>
+
+        <% else %>
+
+            <div class="field">
+              <%= f.label :isaustintxlivingexpense %><br>
+              <%= f.check_box :isaustintxlivingexpense, :checked => false %>
+            </div>
+
+        <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

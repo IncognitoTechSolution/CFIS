@@ -5,7 +5,6 @@
 <table>
   <thead>
     <tr>
-      <th>Filer</th>
       <th>Report type</th>
       <th>Candidate</th>
       <th>Treasurer</th>
@@ -24,7 +23,6 @@
   <tbody>
     <% @campaign_finance_infos.each do |campaign_finance_info| %>
       <tr>
-        <td><%= campaign_finance_info.user.email %></td>
         <td><%= campaign_finance_info.report_type_id %></td>
         <td><%= campaign_finance_info.candidate_id %></td>
         <td><%= campaign_finance_info.treasurer_id %></td>

@@ -59,18 +59,62 @@
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </div>
-  <div class="field">
-    <%= f.label :isoutofstatepac %><br>
-    <%= f.check_box :isoutofstatepac %>
-  </div>
+
+    <% case $outofstatepac %>
+
+    <% when '1' %>
+
+        <div class="field">
+          <%= f.label :isoutofstatepac %><br>
+          <%= f.check_box :isoutofstatepac, :checked => true  %>
+        </div>
+
+    <% when '0' %>
+
+        <div class="field">
+          <%= f.label :isoutofstatepac %><br>
+          <%= f.check_box :isoutofstatepac, :checked => false  %>
+        </div>
+
+    <% else %>
+
+        <div class="field">
+          <%= f.label :isoutofstatepac %><br>
+          <%= f.check_box :isoutofstatepac, :checked => false %>
+        </div>
+
+    <% end %>
+
   <div class="field">
     <%= f.label :pacid %><br>
     <%= f.text_field :pacid %>
   </div>
-  <div class="field">
-    <%= f.label :istraveloutsidetx %><br>
-    <%= f.check_box :istraveloutsidetx %>
-  </div>
+
+    <% case $traveloutsidetx %>
+
+    <% when '1' %>
+
+        <div class="field">
+          <%= f.label :istraveloutsidetx %><br>
+          <%= f.check_box :istraveloutsidetx, :checked => true %>
+        </div>
+
+    <% when '0' %>
+
+        <div class="field">
+          <%= f.label :istraveloutsidetx %><br>
+          <%= f.check_box :istraveloutsidetx, :checked => false %>
+        </div>
+
+    <% when '0' %>
+
+        <div class="field">
+          <%= f.label :istraveloutsidetx %><br>
+          <%= f.check_box :istraveloutsidetx, :checked => false %>
+        </div>
+
+    <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

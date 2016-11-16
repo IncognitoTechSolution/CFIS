@@ -1,4 +1,4 @@
-<%= form_for(@campaign_finance_info, layout: :inline) do |f| %>
+<%= form_for(@campaign_finance_info, layout: :inline, html:{ target: "blank"}) do |f| %>
 <div class="container">
 
   <div class="col-md-12 col-sm-12 col-xs-12">
@@ -36,7 +36,7 @@
                 </div>
                 <div class="col-md-6">
                   <%= f.label :report_type_id, 'Report Type' %>
-                  <%= f.collection_select :report_type_id, ReportType.all, :id, :rtype,{ prompt: "Select One" } %>
+                  <%= f.collection_select :report_type_id, ReportType.all, :id, :rtype,{ prompt: "Select One" }%>
                 </div>
                 <div class="col-md-6">
                   <%= f.label :candidate_id %>
@@ -72,11 +72,32 @@
                     <%= f.label :election_type_id, 'Election Type' %>
                     <%= f.collection_select :election_type_id, ElectionType.all, :id, :ectype,{ prompt: "Select One" } %>
                   </div><br><br><br>
-                <div class="col-md-6">
-                   <%= f.label :ontime, 'By checking this box you are indication report will be submitted on time.' %><br>
-                   <%= f.check_box :ontime %>
-                </div>
-                </div>
+
+                  <% case $ontime %>
+                  <% when '1' %>
+
+                      <div class="col-md-6">
+                         <%= f.label :ontime, 'By checking this box you are indication report will be submitted on time.' %><br>
+                         <%= f.check_box :ontime, :checked => true %>
+                      </div>
+
+                  <% when '0' %>
+
+                      <div class="col-md-6">
+                        <%= f.label :ontime, 'By checking this box you are indication report will be submitted on time.' %><br>
+                        <%= f.check_box :ontime, :checked => false %>
+                      </div>
+
+                  <% else %>
+
+                      <div class="col-md-6">
+                        <%= f.label :ontime, 'By checking this box you are indication report will be submitted on time.' %><br>
+                        <%= f.check_box :ontime, :checked => false %>
+                      </div>
+
+                <% end %>
+
+            </div>
           </div>
         </div>
 
@@ -93,10 +114,39 @@
         </div>
         <div id="two" class="panel-collapse collapse">
           <div class="panel-body">
+
+            <% case $noticecheck %>
+            <% when '1' %>
+
             <div class="field">
+
               <%= f.label :noticecheck, 'Not Applicable' %><br>
-              <%= f.check_box :noticecheck %><p>(By checking the box, you are indicating that you are intentionally leaving this form blank.)</p>
+              <%= f.check_box :noticecheck, :checked => true %><p>(By checking the box, you are indicating that you are intentionally leaving this form blank.)</p>
+
             </div>
+
+            <% when '0' %>
+
+                <div class="field">
+
+                  <%= f.label :noticecheck, 'Not Applicable' %><br>
+                  <%= f.check_box :noticecheck, :checked => false %><p>(By checking the box, you are indicating that you are intentionally leaving this form blank.)</p>
+
+                </div>
+
+            <% else %>
+
+                <div class="field">
+
+                  <%= f.label :noticecheck, 'Not Applicable' %><br>
+                  <%= f.check_box :noticecheck, :checked => false %><p>(By checking the box, you are indicating that you are intentionally leaving this form blank.)</p>
+
+                </div>
+
+
+            <% end %>
+
+
             <div id="NoticeFromCom">
               <%= f.fields_for :committee_notices do |committee_notice| %>
                   <%= render 'committee_notice_fields', f: committee_notice %>
@@ -122,10 +172,31 @@
         </div>
         <div id="three" class="panel-collapse collapse">
           <div class="panel-body">
+
+            <% case $noticecheck %>
+            <% when '1' %>
+
             <div class="field">
               <%= f.label :contributioncheck, 'Not Applicable' %><br>
-              <%= f.check_box :contributioncheck %><p>(By checking the box, you are indicating that you are intentionally leaving this form blank.)</p>
+              <%= f.check_box :contributioncheck, :checked => true %><p>(By checking the box, you are indicating that you are intentionally leaving this form blank.)</p>
             </div>
+
+            <% when '0' %>
+
+                <div class="field">
+                  <%= f.label :contributioncheck, 'Not Applicable' %><br>
+                  <%= f.check_box :contributioncheck, :checked => false %><p>(By checking the box, you are indicating that you are intentionally leaving this form blank.)</p>
+                </div>
+
+            <% else %>
+
+                <div class="field">
+                  <%= f.label :contributioncheck, 'Not Applicable' %><br>
+                  <%= f.check_box :contributioncheck, :checked => true %><p>(By checking the box, you are indicating that you are intentionally leaving this form blank.)</p>
+                </div>
+
+            <% end %>
+
             <div id="Contributions">
               <%= f.fields_for :contributions do |contribution| %>
                   <%= render 'contribution_fields', f: contribution %>
@@ -150,10 +221,31 @@
         </div>
         <div id="four" class="panel-collapse collapse in">
           <div class="panel-body">
+
+            <% case $expenditurecheck %>
+            <% when '1' %>
+
             <div class="field">
               <%= f.label :expenditurecheck, 'Not Applicable' %><br>
-              <%= f.check_box :expenditurecheck %><p>(By checking the box, you are indicating that you are intentionally leaving this form blank.)</p>
+              <%= f.check_box :expenditurecheck, :checked => true %><p>(By checking the box, you are indicating that you are intentionally leaving this form blank.)</p>
             </div>
+
+            <% when '0' %>
+
+                <div class="field">
+                  <%= f.label :expenditurecheck, 'Not Applicable' %><br>
+                  <%= f.check_box :expenditurecheck, :checked => false %><p>(By checking the box, you are indicating that you are intentionally leaving this form blank.)</p>
+                </div>
+
+            <% else %>
+
+                <div class="field">
+                  <%= f.label :expenditurecheck, 'Not Applicable' %><br>
+                  <%= f.check_box :expenditurecheck, :checked => false %><p>(By checking the box, you are indicating that you are intentionally leaving this form blank.)</p>
+                </div>
+
+            <% end %>
+
             <div id="Expenditures">
               <%= f.fields_for :expenditures do |expenditure| %>
                   <%= render 'expenditure_fields', f: expenditure %>
@@ -178,10 +270,31 @@
         </div>
       <div id="five" class="panel-collapse collapse in">
         <div class="panel-body">
+
+          <% case $loancheck %>
+          <% when '1' %>
+
           <div class="field">
             <%= f.label :loancheck, 'Not Applicable' %><br>
-            <%= f.check_box :loancheck %><p>(By checking the box, you are indicating that you are intentionally leaving this form blank.)</p>
+            <%= f.check_box :loancheck, :checked => true %><p>(By checking the box, you are indicating that you are intentionally leaving this form blank.)</p>
           </div>
+
+          <% when '0' %>
+
+              <div class="field">
+                <%= f.label :loancheck, 'Not Applicable' %><br>
+                <%= f.check_box :loancheck, :checked => false %><p>(By checking the box, you are indicating that you are intentionally leaving this form blank.)</p>
+              </div>
+
+          <% else %>
+
+              <div class="field">
+                <%= f.label :loancheck, 'Not Applicable' %><br>
+                <%= f.check_box :loancheck, :checked => false %><p>(By checking the box, you are indicating that you are intentionally leaving this form blank.)</p>
+              </div>
+
+          <% end %>
+
           <div id="Loans">
             <%= f.fields_for :loans do |loan| %>
                 <%= render 'loan_fields', f: loan %>
@@ -205,10 +318,31 @@
            </div>
           <div id="six" class="panel-collapse collapse in">
         <div class="panel-body">
+
+          <% case $paytocohcheck %>
+          <% when '1' %>
+
           <div class="field">
             <%= f.label :paytocohcheck, 'Not Applicable' %><br>
-            <%= f.check_box :paytocohcheck %><p>(By checking the box, you are indicating that you are intentionally leaving this form blank.)</p>
+            <%= f.check_box :paytocohcheck, :checked => true %><p>(By checking the box, you are indicating that you are intentionally leaving this form blank.)</p>
           </div>
+
+          <% when '0' %>
+
+              <div class="field">
+                <%= f.label :paytocohcheck, 'Not Applicable' %><br>
+                <%= f.check_box :paytocohcheck, :checked => false %><p>(By checking the box, you are indicating that you are intentionally leaving this form blank.)</p>
+              </div>
+
+          <% else %>
+
+              <div class="field">
+                <%= f.label :paytocohcheck, 'Not Applicable' %><br>
+                <%= f.check_box :paytocohcheck, :checked => false %><p>(By checking the box, you are indicating that you are intentionally leaving this form blank.)</p>
+              </div>
+
+          <% end %>
+
           <div id="COH Payments">
             <%= f.fields_for :coh_payments do |coh_payment| %>
                 <%= render 'coh_payment_fields', f: coh_payment %>
@@ -232,10 +366,31 @@
                   </div>
                   <div id="seven" class="panel-collapse collapse in">
                     <div class="panel-body">
+
+                      <% case $investmentcheck %>
+                      <% when '1' %>
+
                       <div class="field">
                         <%= f.label :investmentcheck, 'Not Applicable' %><br>
-                        <%= f.check_box :investmentcheck %><p>(By checking the box, you are indicating that you are intentionally leaving this form blank.)</p>
+                        <%= f.check_box :investmentcheck, :checked => true %><p>(By checking the box, you are indicating that you are intentionally leaving this form blank.)</p>
                       </div>
+
+                      <% when '0' %>
+
+                          <div class="field">
+                            <%= f.label :investmentcheck, 'Not Applicable' %><br>
+                            <%= f.check_box :investmentcheck, :checked => false %><p>(By checking the box, you are indicating that you are intentionally leaving this form blank.)</p>
+                          </div>
+
+                      <% else %>
+
+                          <div class="field">
+                            <%= f.label :investmentcheck, 'Not Applicable' %><br>
+                            <%= f.check_box :investmentcheck, :checked => false %><p>(By checking the box, you are indicating that you are intentionally leaving this form blank.)</p>
+                          </div>
+
+                      <% end %>
+
                       <div id="Investment Purchases">
                         <%= f.fields_for :investment_purchases do |investment_purchase| %>
                             <%= render 'investment_purchase_fields', f: investment_purchase %>
@@ -262,10 +417,31 @@
        </div>
          <div id="eight" class="panel-collapse collapse in">
           <div class="panel-body">
+
+            <% case $creditcheck %>
+            <% when '1' %>
+
             <div class="field">
               <%= f.label :creditcheck, 'Not Applicable' %><br>
-              <%= f.check_box :creditcheck %><p>(By checking the box, you are indicating that you are intentionally leaving this form blank.)</p>
+              <%= f.check_box :creditcheck, :checked => true %><p>(By checking the box, you are indicating that you are intentionally leaving this form blank.)</p>
             </div>
+
+            <% when '0' %>
+
+                <div class="field">
+                  <%= f.label :creditcheck, 'Not Applicable' %><br>
+                  <%= f.check_box :creditcheck, :checked => false %><p>(By checking the box, you are indicating that you are intentionally leaving this form blank.)</p>
+                </div>
+
+            <% else %>
+
+                <div class="field">
+                  <%= f.label :creditcheck, 'Not Applicable' %><br>
+                  <%= f.check_box :creditcheck, :checked => false %><p>(By checking the box, you are indicating that you are intentionally leaving this form blank.)</p>
+                </div>
+
+          <% end %>
+
             <div id="Credits">
               <%= f.fields_for :credits do |credit| %>
                   <%= render 'credit_fields', f: credit %>
@@ -290,10 +466,31 @@
                   </div>
                   <div id="nine" class="panel-collapse collapse in">
                     <div class="panel-body">
+
+                      <% case $travelcheck %>
+                      <% when '1' %>
+
                       <div class="field">
                         <%= f.label :travelcheck, 'Not Applicable' %><br>
-                        <%= f.check_box :travelcheck %><p>(By checking the box, you are indicating that you are intentionally leaving this form blank.)</p>
+                        <%= f.check_box :travelcheck, :checked => true %><p>(By checking the box, you are indicating that you are intentionally leaving this form blank.)</p>
                       </div>
+
+                      <% when '0' %>
+
+                          <div class="field">
+                            <%= f.label :travelcheck, 'Not Applicable' %><br>
+                            <%= f.check_box :travelcheck, :checked => false %><p>(By checking the box, you are indicating that you are intentionally leaving this form blank.)</p>
+                          </div>
+
+                      <% else %>
+
+                          <div class="field">
+                            <%= f.label :travelcheck, 'Not Applicable' %><br>
+                            <%= f.check_box :travelcheck, :checked => false %><p>(By checking the box, you are indicating that you are intentionally leaving this form blank.)</p>
+                          </div>
+
+                      <% end %>
+
                       <div id="Travels">
                         <%= f.fields_for :travels do |travel| %>
                             <%= render 'travel_fields', f: travel %>
@@ -319,11 +516,10 @@
 </div>
 <!-- end of container -->
 
-  <div class="actions">
-    <%= f.submit 'Submit Report',:class => "btn btn-default" %>
-  </div>
-                <div class="actions">
-                  <%= f.submit 'Preview Report',:class => "btn btn-default" %>
-                </div>
+                <%= f.submit 'Export', name: 'commit', value: 'Export' %>
+                <%= f.submit 'Submit', name: 'commit', value: 'Submit' %>
+                <%= f.submit 'Import', name: 'commit', value: 'Import' %>
+
+
 <% end %>
 <% end %>

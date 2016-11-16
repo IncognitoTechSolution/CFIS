@@ -67,18 +67,82 @@
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </div>
-  <div class="field">
-    <%= f.label :isbenefitCOH %><br>
-    <%= f.check_box :isbenefitCOH %>
-  </div>
-  <div class="field">
-    <%= f.label :istraveloutsidetx %><br>
-    <%= f.check_box :istraveloutsidetx %>
-  </div>
-  <div class="field">
-    <%= f.label :isreimbursementintended %><br>
-    <%= f.check_box :isreimbursementintended %>
-  </div>
+
+    <% case $e_isbenefitCOH %>
+
+    <% when '1' %>
+
+        <div class="field">
+          <%= f.label :isbenefitCOH %><br>
+          <%= f.check_box :isbenefitCOH, :checked => true %>
+        </div>
+
+    <% when '0' %>
+
+        <div class="field">
+          <%= f.label :isbenefitCOH %><br>
+          <%= f.check_box :isbenefitCOH, :checked => false %>
+        </div>
+
+    <% else %>
+
+        <div class="field">
+          <%= f.label :isbenefitCOH %><br>
+          <%= f.check_box :isbenefitCOH, :checked => false %>
+        </div>
+
+  <% end %>
+
+    <% case $e_traveloutsidetx %>
+
+    <% when '1' %>
+
+        <div class="field">
+          <%= f.label :istraveloutsidetx %><br>
+          <%= f.check_box :istraveloutsidetx, :checked => true %>
+        </div>
+
+    <% when '0' %>
+
+        <div class="field">
+          <%= f.label :istraveloutsidetx %><br>
+          <%= f.check_box :istraveloutsidetx, :checked => false %>
+        </div>
+
+    <% else %>
+
+        <div class="field">
+          <%= f.label :istraveloutsidetx %><br>
+          <%= f.check_box :istraveloutsidetx, :checked => false %>
+        </div>
+
+    <% end %>
+
+    <% case $e_isreimbursementintended %>
+
+    <% when '1' %>
+
+        <div class="field">
+          <%= f.label :isreimbursementintended %><br>
+          <%= f.check_box :isreimbursementintended, :checked => true %>
+        </div>
+
+    <% when '0' %>
+
+        <div class="field">
+          <%= f.label :isreimbursementintended %><br>
+          <%= f.check_box :isreimbursementintended, :checked => false %>
+        </div>
+
+    <% else %>
+
+        <div class="field">
+          <%= f.label :isreimbursementintended %><br>
+          <%= f.check_box :isreimbursementintended, :checked => true %>
+        </div>
+
+   <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>
